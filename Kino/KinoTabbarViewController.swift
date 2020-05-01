@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  KinoTabbarViewController.swift
 //  Kino
 //
 //  Created by Matti on 01/05/2020.
@@ -8,10 +8,8 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class KinoTabbarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 }

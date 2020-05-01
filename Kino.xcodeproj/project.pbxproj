@@ -10,12 +10,28 @@
 		281419B7D820331D6FD4CA71 /* Pods_KinoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AF53134D766DD6D5417BF61 /* Pods_KinoTests.framework */; };
 		489B46C063E3E0932E68B4D0 /* Pods_Kino.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9578DC45C2A0D08D0864F90D /* Pods_Kino.framework */; };
 		49099EC5245C209900D7DCD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099EC4245C209900D7DCD5 /* AppDelegate.swift */; };
-		49099EC9245C209900D7DCD5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099EC8245C209900D7DCD5 /* ViewController.swift */; };
 		49099ECC245C209900D7DCD5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49099ECA245C209900D7DCD5 /* Main.storyboard */; };
 		49099ECF245C209900D7DCD5 /* Kino.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49099ECD245C209900D7DCD5 /* Kino.xcdatamodeld */; };
 		49099ED1245C209C00D7DCD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49099ED0245C209C00D7DCD5 /* Assets.xcassets */; };
 		49099ED4245C209C00D7DCD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49099ED2245C209C00D7DCD5 /* LaunchScreen.storyboard */; };
 		49099EDF245C209C00D7DCD5 /* KinoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099EDE245C209C00D7DCD5 /* KinoTests.swift */; };
+		49099EEE245C4F0300D7DCD5 /* KinoTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099EED245C4F0300D7DCD5 /* KinoTabbarViewController.swift */; };
+		49099EF5245C4F9400D7DCD5 /* HomeScenePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099EF1245C4F9400D7DCD5 /* HomeScenePresenter.swift */; };
+		49099EF6245C4F9400D7DCD5 /* HomeSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099EF2245C4F9400D7DCD5 /* HomeSceneViewController.swift */; };
+		49099EF7245C4F9400D7DCD5 /* HomeSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099EF3245C4F9400D7DCD5 /* HomeSceneInteractor.swift */; };
+		49099EF8245C4F9400D7DCD5 /* HomeSceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099EF4245C4F9400D7DCD5 /* HomeSceneViewModel.swift */; };
+		49099EFD245C4FA800D7DCD5 /* WatchListScenePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099EF9245C4FA800D7DCD5 /* WatchListScenePresenter.swift */; };
+		49099EFE245C4FA800D7DCD5 /* WatchListSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099EFA245C4FA800D7DCD5 /* WatchListSceneViewController.swift */; };
+		49099EFF245C4FA800D7DCD5 /* WatchListSceneInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099EFB245C4FA800D7DCD5 /* WatchListSceneInteractor.swift */; };
+		49099F00245C4FA800D7DCD5 /* WatchListSceneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099EFC245C4FA800D7DCD5 /* WatchListSceneViewModel.swift */; };
+		49099F07245C51CF00D7DCD5 /* HomeSceneInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099F03245C51CF00D7DCD5 /* HomeSceneInteractorTests.swift */; };
+		49099F08245C51CF00D7DCD5 /* HomeSceneViewControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099F04245C51CF00D7DCD5 /* HomeSceneViewControllerSpy.swift */; };
+		49099F09245C51CF00D7DCD5 /* HomeScenePresenterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099F05245C51CF00D7DCD5 /* HomeScenePresenterSpy.swift */; };
+		49099F0A245C51CF00D7DCD5 /* HomeScenePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099F06245C51CF00D7DCD5 /* HomeScenePresenterTests.swift */; };
+		49099F10245C520D00D7DCD5 /* WatchListSceneInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099F0C245C520D00D7DCD5 /* WatchListSceneInteractorTests.swift */; };
+		49099F11245C520D00D7DCD5 /* WatchListSceneViewControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099F0D245C520D00D7DCD5 /* WatchListSceneViewControllerSpy.swift */; };
+		49099F12245C520D00D7DCD5 /* WatchListScenePresenterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099F0E245C520D00D7DCD5 /* WatchListScenePresenterSpy.swift */; };
+		49099F13245C520D00D7DCD5 /* WatchListScenePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099F0F245C520D00D7DCD5 /* WatchListScenePresenterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +48,6 @@
 		3AF53134D766DD6D5417BF61 /* Pods_KinoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KinoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49099EC1245C209900D7DCD5 /* Kino.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kino.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49099EC4245C209900D7DCD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		49099EC8245C209900D7DCD5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		49099ECB245C209900D7DCD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		49099ECE245C209900D7DCD5 /* Kino.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Kino.xcdatamodel; sourceTree = "<group>"; };
 		49099ED0245C209C00D7DCD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -41,6 +56,23 @@
 		49099EDA245C209C00D7DCD5 /* KinoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KinoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		49099EDE245C209C00D7DCD5 /* KinoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KinoTests.swift; sourceTree = "<group>"; };
 		49099EE0245C209C00D7DCD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49099EED245C4F0300D7DCD5 /* KinoTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KinoTabbarViewController.swift; sourceTree = "<group>"; };
+		49099EF1245C4F9400D7DCD5 /* HomeScenePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScenePresenter.swift; sourceTree = "<group>"; };
+		49099EF2245C4F9400D7DCD5 /* HomeSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSceneViewController.swift; sourceTree = "<group>"; };
+		49099EF3245C4F9400D7DCD5 /* HomeSceneInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSceneInteractor.swift; sourceTree = "<group>"; };
+		49099EF4245C4F9400D7DCD5 /* HomeSceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSceneViewModel.swift; sourceTree = "<group>"; };
+		49099EF9245C4FA800D7DCD5 /* WatchListScenePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListScenePresenter.swift; sourceTree = "<group>"; };
+		49099EFA245C4FA800D7DCD5 /* WatchListSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListSceneViewController.swift; sourceTree = "<group>"; };
+		49099EFB245C4FA800D7DCD5 /* WatchListSceneInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListSceneInteractor.swift; sourceTree = "<group>"; };
+		49099EFC245C4FA800D7DCD5 /* WatchListSceneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListSceneViewModel.swift; sourceTree = "<group>"; };
+		49099F03245C51CF00D7DCD5 /* HomeSceneInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSceneInteractorTests.swift; sourceTree = "<group>"; };
+		49099F04245C51CF00D7DCD5 /* HomeSceneViewControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSceneViewControllerSpy.swift; sourceTree = "<group>"; };
+		49099F05245C51CF00D7DCD5 /* HomeScenePresenterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScenePresenterSpy.swift; sourceTree = "<group>"; };
+		49099F06245C51CF00D7DCD5 /* HomeScenePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScenePresenterTests.swift; sourceTree = "<group>"; };
+		49099F0C245C520D00D7DCD5 /* WatchListSceneInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListSceneInteractorTests.swift; sourceTree = "<group>"; };
+		49099F0D245C520D00D7DCD5 /* WatchListSceneViewControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListSceneViewControllerSpy.swift; sourceTree = "<group>"; };
+		49099F0E245C520D00D7DCD5 /* WatchListScenePresenterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListScenePresenterSpy.swift; sourceTree = "<group>"; };
+		49099F0F245C520D00D7DCD5 /* WatchListScenePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListScenePresenterTests.swift; sourceTree = "<group>"; };
 		7EA2CB0BE102C3B247A27A6C /* Pods-KinoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KinoTests.debug.xcconfig"; path = "Target Support Files/Pods-KinoTests/Pods-KinoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9578DC45C2A0D08D0864F90D /* Pods_Kino.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kino.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2E3D5F7F0BD547794965B0E /* Pods-KinoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KinoTests.release.xcconfig"; path = "Target Support Files/Pods-KinoTests/Pods-KinoTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -92,12 +124,12 @@
 			isa = PBXGroup;
 			children = (
 				49099EC4245C209900D7DCD5 /* AppDelegate.swift */,
-				49099EC8245C209900D7DCD5 /* ViewController.swift */,
-				49099ECA245C209900D7DCD5 /* Main.storyboard */,
-				49099ED0245C209C00D7DCD5 /* Assets.xcassets */,
-				49099ED2245C209C00D7DCD5 /* LaunchScreen.storyboard */,
 				49099ED5245C209C00D7DCD5 /* Info.plist */,
-				49099ECD245C209900D7DCD5 /* Kino.xcdatamodeld */,
+				49099EED245C4F0300D7DCD5 /* KinoTabbarViewController.swift */,
+				49099ECA245C209900D7DCD5 /* Main.storyboard */,
+				49099EEF245C4F6600D7DCD5 /* HomeScene */,
+				49099EF0245C4F7200D7DCD5 /* WatchListScene */,
+				49099F01245C4FC400D7DCD5 /* Resources */,
 			);
 			path = Kino;
 			sourceTree = "<group>";
@@ -105,10 +137,66 @@
 		49099EDD245C209C00D7DCD5 /* KinoTests */ = {
 			isa = PBXGroup;
 			children = (
+				49099F02245C51B900D7DCD5 /* HomeScene */,
+				49099F0B245C51E300D7DCD5 /* WatchListScene */,
 				49099EDE245C209C00D7DCD5 /* KinoTests.swift */,
 				49099EE0245C209C00D7DCD5 /* Info.plist */,
 			);
 			path = KinoTests;
+			sourceTree = "<group>";
+		};
+		49099EEF245C4F6600D7DCD5 /* HomeScene */ = {
+			isa = PBXGroup;
+			children = (
+				49099EF1245C4F9400D7DCD5 /* HomeScenePresenter.swift */,
+				49099EF2245C4F9400D7DCD5 /* HomeSceneViewController.swift */,
+				49099EF3245C4F9400D7DCD5 /* HomeSceneInteractor.swift */,
+				49099EF4245C4F9400D7DCD5 /* HomeSceneViewModel.swift */,
+			);
+			path = HomeScene;
+			sourceTree = "<group>";
+		};
+		49099EF0245C4F7200D7DCD5 /* WatchListScene */ = {
+			isa = PBXGroup;
+			children = (
+				49099EF9245C4FA800D7DCD5 /* WatchListScenePresenter.swift */,
+				49099EFA245C4FA800D7DCD5 /* WatchListSceneViewController.swift */,
+				49099EFB245C4FA800D7DCD5 /* WatchListSceneInteractor.swift */,
+				49099EFC245C4FA800D7DCD5 /* WatchListSceneViewModel.swift */,
+			);
+			path = WatchListScene;
+			sourceTree = "<group>";
+		};
+		49099F01245C4FC400D7DCD5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				49099ED2245C209C00D7DCD5 /* LaunchScreen.storyboard */,
+				49099ECD245C209900D7DCD5 /* Kino.xcdatamodeld */,
+				49099ED0245C209C00D7DCD5 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		49099F02245C51B900D7DCD5 /* HomeScene */ = {
+			isa = PBXGroup;
+			children = (
+				49099F03245C51CF00D7DCD5 /* HomeSceneInteractorTests.swift */,
+				49099F04245C51CF00D7DCD5 /* HomeSceneViewControllerSpy.swift */,
+				49099F05245C51CF00D7DCD5 /* HomeScenePresenterSpy.swift */,
+				49099F06245C51CF00D7DCD5 /* HomeScenePresenterTests.swift */,
+			);
+			path = HomeScene;
+			sourceTree = "<group>";
+		};
+		49099F0B245C51E300D7DCD5 /* WatchListScene */ = {
+			isa = PBXGroup;
+			children = (
+				49099F0C245C520D00D7DCD5 /* WatchListSceneInteractorTests.swift */,
+				49099F0D245C520D00D7DCD5 /* WatchListSceneViewControllerSpy.swift */,
+				49099F0E245C520D00D7DCD5 /* WatchListScenePresenterSpy.swift */,
+				49099F0F245C520D00D7DCD5 /* WatchListScenePresenterTests.swift */,
+			);
+			path = WatchListScene;
 			sourceTree = "<group>";
 		};
 		C3F816513F71B7FD354D0DB1 /* Pods */ = {
@@ -299,8 +387,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49099EC9245C209900D7DCD5 /* ViewController.swift in Sources */,
+				49099EF7245C4F9400D7DCD5 /* HomeSceneInteractor.swift in Sources */,
+				49099F00245C4FA800D7DCD5 /* WatchListSceneViewModel.swift in Sources */,
+				49099EF6245C4F9400D7DCD5 /* HomeSceneViewController.swift in Sources */,
+				49099EF5245C4F9400D7DCD5 /* HomeScenePresenter.swift in Sources */,
+				49099EEE245C4F0300D7DCD5 /* KinoTabbarViewController.swift in Sources */,
 				49099EC5245C209900D7DCD5 /* AppDelegate.swift in Sources */,
+				49099EFF245C4FA800D7DCD5 /* WatchListSceneInteractor.swift in Sources */,
+				49099EFD245C4FA800D7DCD5 /* WatchListScenePresenter.swift in Sources */,
+				49099EFE245C4FA800D7DCD5 /* WatchListSceneViewController.swift in Sources */,
+				49099EF8245C4F9400D7DCD5 /* HomeSceneViewModel.swift in Sources */,
 				49099ECF245C209900D7DCD5 /* Kino.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,6 +405,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49099F12245C520D00D7DCD5 /* WatchListScenePresenterSpy.swift in Sources */,
+				49099F07245C51CF00D7DCD5 /* HomeSceneInteractorTests.swift in Sources */,
+				49099F0A245C51CF00D7DCD5 /* HomeScenePresenterTests.swift in Sources */,
+				49099F13245C520D00D7DCD5 /* WatchListScenePresenterTests.swift in Sources */,
+				49099F09245C51CF00D7DCD5 /* HomeScenePresenterSpy.swift in Sources */,
+				49099F10245C520D00D7DCD5 /* WatchListSceneInteractorTests.swift in Sources */,
+				49099F08245C51CF00D7DCD5 /* HomeSceneViewControllerSpy.swift in Sources */,
+				49099F11245C520D00D7DCD5 /* WatchListSceneViewControllerSpy.swift in Sources */,
 				49099EDF245C209C00D7DCD5 /* KinoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
