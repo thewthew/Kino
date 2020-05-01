@@ -12,7 +12,7 @@ protocol HomeSceneInteractorInput: class {
     func loadContent()
 }
 
-final class HomeSceneInteractor {
+final class HomeSceneInteractor: KinoAPIInjected {
     var presenter: HomeScenePresenterInput?
 
     init(presenter: HomeScenePresenterInput?) {
@@ -22,6 +22,13 @@ final class HomeSceneInteractor {
 
 extension HomeSceneInteractor: HomeSceneInteractorInput {
     func loadContent() {
-
+        kinoAPI.getMovie { (result: Result<Movie, APIServiceError>) in
+            switch result {
+            case .success(let movie):
+                print(movie)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }

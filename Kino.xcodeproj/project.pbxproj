@@ -32,6 +32,10 @@
 		49099F11245C520D00D7DCD5 /* WatchListSceneViewControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099F0D245C520D00D7DCD5 /* WatchListSceneViewControllerSpy.swift */; };
 		49099F12245C520D00D7DCD5 /* WatchListScenePresenterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099F0E245C520D00D7DCD5 /* WatchListScenePresenterSpy.swift */; };
 		49099F13245C520D00D7DCD5 /* WatchListScenePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099F0F245C520D00D7DCD5 /* WatchListScenePresenterTests.swift */; };
+		49099F16245C556F00D7DCD5 /* KinoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099F15245C556F00D7DCD5 /* KinoAPI.swift */; };
+		49099F18245C55AB00D7DCD5 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099F17245C55AB00D7DCD5 /* Manager.swift */; };
+		49099F1C245C58B500D7DCD5 /* URLSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099F1B245C58B500D7DCD5 /* URLSessionExtension.swift */; };
+		49099F1F245C5C2A00D7DCD5 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099F1E245C5C2A00D7DCD5 /* Movie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +77,10 @@
 		49099F0D245C520D00D7DCD5 /* WatchListSceneViewControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListSceneViewControllerSpy.swift; sourceTree = "<group>"; };
 		49099F0E245C520D00D7DCD5 /* WatchListScenePresenterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListScenePresenterSpy.swift; sourceTree = "<group>"; };
 		49099F0F245C520D00D7DCD5 /* WatchListScenePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListScenePresenterTests.swift; sourceTree = "<group>"; };
+		49099F15245C556F00D7DCD5 /* KinoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KinoAPI.swift; sourceTree = "<group>"; };
+		49099F17245C55AB00D7DCD5 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		49099F1B245C58B500D7DCD5 /* URLSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionExtension.swift; sourceTree = "<group>"; };
+		49099F1E245C5C2A00D7DCD5 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		7EA2CB0BE102C3B247A27A6C /* Pods-KinoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KinoTests.debug.xcconfig"; path = "Target Support Files/Pods-KinoTests/Pods-KinoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9578DC45C2A0D08D0864F90D /* Pods_Kino.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kino.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2E3D5F7F0BD547794965B0E /* Pods-KinoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KinoTests.release.xcconfig"; path = "Target Support Files/Pods-KinoTests/Pods-KinoTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -127,8 +135,12 @@
 				49099ED5245C209C00D7DCD5 /* Info.plist */,
 				49099EED245C4F0300D7DCD5 /* KinoTabbarViewController.swift */,
 				49099ECA245C209900D7DCD5 /* Main.storyboard */,
+				49099F19245C55B100D7DCD5 /* Manager */,
+				49099F1D245C5C1D00D7DCD5 /* Model */,
 				49099EEF245C4F6600D7DCD5 /* HomeScene */,
 				49099EF0245C4F7200D7DCD5 /* WatchListScene */,
+				49099F14245C54F600D7DCD5 /* Networking */,
+				49099F1A245C58A500D7DCD5 /* Extensions */,
 				49099F01245C4FC400D7DCD5 /* Resources */,
 			);
 			path = Kino;
@@ -197,6 +209,38 @@
 				49099F0F245C520D00D7DCD5 /* WatchListScenePresenterTests.swift */,
 			);
 			path = WatchListScene;
+			sourceTree = "<group>";
+		};
+		49099F14245C54F600D7DCD5 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				49099F15245C556F00D7DCD5 /* KinoAPI.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		49099F19245C55B100D7DCD5 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				49099F17245C55AB00D7DCD5 /* Manager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		49099F1A245C58A500D7DCD5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				49099F1B245C58B500D7DCD5 /* URLSessionExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		49099F1D245C5C1D00D7DCD5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				49099F1E245C5C2A00D7DCD5 /* Movie.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		C3F816513F71B7FD354D0DB1 /* Pods */ = {
@@ -394,10 +438,14 @@
 				49099EEE245C4F0300D7DCD5 /* KinoTabbarViewController.swift in Sources */,
 				49099EC5245C209900D7DCD5 /* AppDelegate.swift in Sources */,
 				49099EFF245C4FA800D7DCD5 /* WatchListSceneInteractor.swift in Sources */,
+				49099F18245C55AB00D7DCD5 /* Manager.swift in Sources */,
+				49099F1C245C58B500D7DCD5 /* URLSessionExtension.swift in Sources */,
+				49099F16245C556F00D7DCD5 /* KinoAPI.swift in Sources */,
 				49099EFD245C4FA800D7DCD5 /* WatchListScenePresenter.swift in Sources */,
 				49099EFE245C4FA800D7DCD5 /* WatchListSceneViewController.swift in Sources */,
 				49099EF8245C4F9400D7DCD5 /* HomeSceneViewModel.swift in Sources */,
 				49099ECF245C209900D7DCD5 /* Kino.xcdatamodeld in Sources */,
+				49099F1F245C5C2A00D7DCD5 /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
