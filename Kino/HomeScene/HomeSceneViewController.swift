@@ -14,6 +14,7 @@ protocol HomeSceneViewControllerInput: class {
 
 final class HomeSceneViewController: UIViewController {
 
+    @IBOutlet weak var moviesCollectionView: UICollectionView!
     var interactor: HomeSceneInteractorInput?
     var viewModel: HomeSceneViewModel.Content? {
         didSet { updateViewContent() }
@@ -49,3 +50,5 @@ extension HomeSceneViewController: HomeSceneViewControllerInput {
         self.viewModel = viewModel
     }
 }
+
+// MARK: - UICollectionDiff

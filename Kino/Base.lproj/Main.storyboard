@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -30,14 +31,74 @@
                     <view key="view" contentMode="scaleToFill" id="9I7-gW-0EL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="N5U-ka-IVI">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cdn-5d-syH">
+                                    <size key="itemSize" width="414" height="221"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MovieCell" id="B1c-zD-nbk" customClass="MovieCell" customModule="Kino" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="221"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="pSc-FE-K5w">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="221"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uiH-1C-bAF">
+                                                    <rect key="frame" x="5" y="5" width="404" height="196"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BLN-f5-4Le">
+                                                    <rect key="frame" x="5" y="200" width="389" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="uiH-1C-bAF" firstAttribute="top" secondItem="pSc-FE-K5w" secondAttribute="top" constant="5" id="IsV-gy-OK5"/>
+                                                <constraint firstAttribute="trailing" secondItem="BLN-f5-4Le" secondAttribute="trailing" constant="20" id="MmG-2G-v6c"/>
+                                                <constraint firstAttribute="bottom" secondItem="BLN-f5-4Le" secondAttribute="bottom" constant="3" id="RrH-ra-laa"/>
+                                                <constraint firstAttribute="trailing" secondItem="uiH-1C-bAF" secondAttribute="trailing" constant="5" id="Tge-Jh-JBg"/>
+                                                <constraint firstItem="BLN-f5-4Le" firstAttribute="top" secondItem="uiH-1C-bAF" secondAttribute="bottom" constant="-1" id="iMC-ZC-Y1g"/>
+                                                <constraint firstItem="uiH-1C-bAF" firstAttribute="leading" secondItem="pSc-FE-K5w" secondAttribute="leading" constant="5" id="tfF-gB-zCE"/>
+                                                <constraint firstItem="BLN-f5-4Le" firstAttribute="leading" secondItem="uiH-1C-bAF" secondAttribute="leading" id="w7m-3a-9ZA"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="414" height="221"/>
+                                        <connections>
+                                            <outlet property="movieImageView" destination="uiH-1C-bAF" id="t0j-jC-kDR"/>
+                                            <outlet property="movieTitleLabel" destination="BLN-f5-4Le" id="zHa-Ij-rFF"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="5Pd-1t-eaV" id="p61-J2-4qW"/>
+                                    <outlet property="delegate" destination="5Pd-1t-eaV" id="WbR-n3-XI6"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="N3h-DQ-9Hi" firstAttribute="bottom" secondItem="N5U-ka-IVI" secondAttribute="bottom" id="UmN-kO-Pvt"/>
+                            <constraint firstItem="N5U-ka-IVI" firstAttribute="top" secondItem="N3h-DQ-9Hi" secondAttribute="top" id="WQc-EK-b9u"/>
+                            <constraint firstItem="N3h-DQ-9Hi" firstAttribute="trailing" secondItem="N5U-ka-IVI" secondAttribute="trailing" id="krI-Sf-wdw"/>
+                            <constraint firstItem="N5U-ka-IVI" firstAttribute="leading" secondItem="N3h-DQ-9Hi" secondAttribute="leading" id="lEW-UR-Xjs"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="N3h-DQ-9Hi"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="4AX-Mo-dNE"/>
+                    <connections>
+                        <outlet property="moviesCollectionView" destination="N5U-ka-IVI" id="IAM-w6-q9B"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N0W-1v-qX4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="81" y="-559"/>
+            <point key="canvasLocation" x="79.710144927536234" y="-559.15178571428567"/>
         </scene>
         <!--Kino Tabbar View Controller-->
         <scene sceneID="yqt-ug-ShV">

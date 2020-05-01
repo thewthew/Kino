@@ -22,7 +22,7 @@ final class HomeSceneInteractor: KinoAPIInjected {
 
 extension HomeSceneInteractor: HomeSceneInteractorInput {
     func loadContent() {
-        kinoAPI.getMovie { (result: Result<Movie, APIServiceError>) in
+        kinoAPI.getPopularMovies { (result: Result<MoviesInfo, APIServiceError>) in
             switch result {
             case .success(let movie):
                 print(movie)

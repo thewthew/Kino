@@ -22,8 +22,8 @@ class KinoAPI {
     private let apiKey = "5473ad565413781b8af8e756e42d37de"
 
     enum Endpoint: String, CaseIterable {
-        case movies = "/movie/550"
-        case exercise = "/exercise"
+        case movie = "/movie/550"
+        case discoverMovies = "/discover/movie"
         case bodyPart = "/exercisecategory"
     }
 
@@ -59,9 +59,14 @@ class KinoAPI {
          }.resume()
     }
 
-    public func getMovie(result: @escaping (Result<Movie, APIServiceError>) -> Void) {
-        let movieURL = baseURL.appendingPathComponent(Endpoint.movies.rawValue)
-        fetchResources(url: movieURL, completion: result)
+    public func getPopularMovies(result: @escaping (Result<MoviesInfo, APIServiceError>) -> Void) {
+        let movieURL = baseURL.appendingPathComponent(Endpoint.discoverMovies.rawValue)
+        let queryItems = [URLQueryItem(name: "sort_by", value: "popularity.desc")]
+        var urlComponents = URLComponents(url: movieURL, resolvingAgainstBaseURL: true)
+        urlComponents?.queryItems = queryItems
+        guard let exerciseNameUrl = urlComponents?.url else {
+            return
+        }
+        fetchResources(url: exerciseNameUrl, completion: result)
     }
-
 }

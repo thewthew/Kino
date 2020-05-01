@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -35,7 +35,10 @@
 		49099F16245C556F00D7DCD5 /* KinoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099F15245C556F00D7DCD5 /* KinoAPI.swift */; };
 		49099F18245C55AB00D7DCD5 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099F17245C55AB00D7DCD5 /* Manager.swift */; };
 		49099F1C245C58B500D7DCD5 /* URLSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099F1B245C58B500D7DCD5 /* URLSessionExtension.swift */; };
-		49099F1F245C5C2A00D7DCD5 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099F1E245C5C2A00D7DCD5 /* Movie.swift */; };
+		49099F21245C63C600D7DCD5 /* MoviesInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099F20245C63C600D7DCD5 /* MoviesInfo.swift */; };
+		49099F26245C81F500D7DCD5 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49099F25245C81F500D7DCD5 /* MovieCell.swift */; };
+		49647883245CD32F0013C0B6 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49647882245CD32F0013C0B6 /* CustomImageView.swift */; };
+		49647885245CD39C0013C0B6 /* skeleton-loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 49647884245CD39C0013C0B6 /* skeleton-loading.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +83,10 @@
 		49099F15245C556F00D7DCD5 /* KinoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KinoAPI.swift; sourceTree = "<group>"; };
 		49099F17245C55AB00D7DCD5 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		49099F1B245C58B500D7DCD5 /* URLSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionExtension.swift; sourceTree = "<group>"; };
-		49099F1E245C5C2A00D7DCD5 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		49099F20245C63C600D7DCD5 /* MoviesInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesInfo.swift; sourceTree = "<group>"; };
+		49099F25245C81F500D7DCD5 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		49647882245CD32F0013C0B6 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		49647884245CD39C0013C0B6 /* skeleton-loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "skeleton-loading.json"; sourceTree = "<group>"; };
 		7EA2CB0BE102C3B247A27A6C /* Pods-KinoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KinoTests.debug.xcconfig"; path = "Target Support Files/Pods-KinoTests/Pods-KinoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9578DC45C2A0D08D0864F90D /* Pods_Kino.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kino.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2E3D5F7F0BD547794965B0E /* Pods-KinoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KinoTests.release.xcconfig"; path = "Target Support Files/Pods-KinoTests/Pods-KinoTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -160,6 +166,7 @@
 		49099EEF245C4F6600D7DCD5 /* HomeScene */ = {
 			isa = PBXGroup;
 			children = (
+				49099F24245C81EA00D7DCD5 /* Cells */,
 				49099EF1245C4F9400D7DCD5 /* HomeScenePresenter.swift */,
 				49099EF2245C4F9400D7DCD5 /* HomeSceneViewController.swift */,
 				49099EF3245C4F9400D7DCD5 /* HomeSceneInteractor.swift */,
@@ -182,6 +189,7 @@
 		49099F01245C4FC400D7DCD5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				49647884245CD39C0013C0B6 /* skeleton-loading.json */,
 				49099ED2245C209C00D7DCD5 /* LaunchScreen.storyboard */,
 				49099ECD245C209900D7DCD5 /* Kino.xcdatamodeld */,
 				49099ED0245C209C00D7DCD5 /* Assets.xcassets */,
@@ -231,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				49099F1B245C58B500D7DCD5 /* URLSessionExtension.swift */,
+				49647882245CD32F0013C0B6 /* CustomImageView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -238,9 +247,17 @@
 		49099F1D245C5C1D00D7DCD5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				49099F1E245C5C2A00D7DCD5 /* Movie.swift */,
+				49099F20245C63C600D7DCD5 /* MoviesInfo.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		49099F24245C81EA00D7DCD5 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				49099F25245C81F500D7DCD5 /* MovieCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		C3F816513F71B7FD354D0DB1 /* Pods */ = {
@@ -275,6 +292,7 @@
 				49099EBE245C209900D7DCD5 /* Frameworks */,
 				49099EBF245C209900D7DCD5 /* Resources */,
 				49099EEC245C29CF00D7DCD5 /* ShellScript */,
+				E0D21EC0C985C7BB0B0A7DA3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -348,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49099ED4245C209C00D7DCD5 /* LaunchScreen.storyboard in Resources */,
+				49647885245CD39C0013C0B6 /* skeleton-loading.json in Resources */,
 				49099ED1245C209C00D7DCD5 /* Assets.xcassets in Resources */,
 				49099ECC245C209900D7DCD5 /* Main.storyboard in Resources */,
 			);
@@ -424,6 +443,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E0D21EC0C985C7BB0B0A7DA3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Kino/Pods-Kino-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Kino/Pods-Kino-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Kino/Pods-Kino-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -441,11 +477,13 @@
 				49099F18245C55AB00D7DCD5 /* Manager.swift in Sources */,
 				49099F1C245C58B500D7DCD5 /* URLSessionExtension.swift in Sources */,
 				49099F16245C556F00D7DCD5 /* KinoAPI.swift in Sources */,
+				49099F26245C81F500D7DCD5 /* MovieCell.swift in Sources */,
+				49099F21245C63C600D7DCD5 /* MoviesInfo.swift in Sources */,
 				49099EFD245C4FA800D7DCD5 /* WatchListScenePresenter.swift in Sources */,
 				49099EFE245C4FA800D7DCD5 /* WatchListSceneViewController.swift in Sources */,
 				49099EF8245C4F9400D7DCD5 /* HomeSceneViewModel.swift in Sources */,
+				49647883245CD32F0013C0B6 /* CustomImageView.swift in Sources */,
 				49099ECF245C209900D7DCD5 /* Kino.xcdatamodeld in Sources */,
-				49099F1F245C5C2A00D7DCD5 /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

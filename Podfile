@@ -7,6 +7,7 @@ target 'Kino' do
 
   # Pods for Kino
   pod 'SwiftLint'
+  pod 'lottie-ios'
 
   target 'KinoTests' do
     inherit! :search_paths
