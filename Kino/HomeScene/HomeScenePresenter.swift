@@ -9,7 +9,7 @@
 import Foundation
 
 protocol HomeScenePresenterInput: class {
-    func modelUpdated()
+    func modelUpdated(movies: Movies)
 }
 
 final class HomeScenePresenter {
@@ -18,11 +18,22 @@ final class HomeScenePresenter {
     init(viewController: HomeSceneViewControllerInput?) {
         self.viewController = viewController
     }
+
+    private func getCells(from movies: Movies) -> [HomeSceneViewModel.MovieCell] {
+        return movies.map { (movie) -> HomeSceneViewModel.MovieCell in
+            return HomeSceneViewModel.MovieCell(title: movie.title, posterUrlString: movie.originalImageUrl)
+        }
+    }
+
+    private func getSection(from movies: Movies) -> [HomeSceneViewModel.Section] {
+        let section = HomeSceneViewModel.Section(titleSection: "popular", movies: getCells(from: movies))
+        return [section]
+    }
 }
 
 extension HomeScenePresenter: HomeScenePresenterInput {
-    func modelUpdated() {
-        let viewModel = HomeSceneViewModel.Content()
+    func modelUpdated(movies: Movies) {
+        let viewModel = HomeSceneViewModel.Content(section: getSection(from: movies))
         viewController?.viewModelUpdated(viewModel)
     }
 }

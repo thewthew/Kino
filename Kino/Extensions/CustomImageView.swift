@@ -63,10 +63,9 @@ class CustomImageView: UIImageView {
                 }
 
                 DispatchQueue.main.async { [weak self] in
-                    guard let data = data, let self = self else {
+                    guard let data = data, let imageToCache = UIImage(data: data), let self = self else {
                         return
                     }
-                    let imageToCache = UIImage(data: data)
                     if self.imageUrlString == urlString {
                         self.removeAnimation()
                         UIView.transition(with: self,
@@ -75,7 +74,7 @@ class CustomImageView: UIImageView {
                                           animations: { self.image = imageToCache },
                                           completion: nil)
                     }
-                    imageCache.setObject(imageToCache!, forKey: urlString as AnyObject)
+                    imageCache.setObject(imageToCache, forKey: urlString as AnyObject)
                 }
             }).resume()
         }

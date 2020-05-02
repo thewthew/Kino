@@ -8,14 +8,19 @@
 
 import UIKit
 
-class MovieCell: UICollectionViewCell {
+class MovieCell: UICollectionViewCell, UICollectionViewCellRegistrable {
 
-    @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var movieTitleLabel: UILabel!
+    @IBOutlet weak var movieImageView: CustomImageView!
 
-    var movie: Movie? {
+    var model: HomeSceneViewModel.MovieCell! {
         didSet {
-            movieTitleLabel.text = movie?.title
+            config()
         }
+    }
+
+    private func config() {
+        movieTitleLabel.text = model?.title
+        movieImageView.loadImageUsingUrl(urlString: model.posterUrlString)
     }
 }

@@ -12,8 +12,12 @@ import XCTest
 class HomeScenePresenterSpy: HomeScenePresenterInput {
     var invokedModelUpdated = false
     var invokedModelUpdatedCount = 0
-    func modelUpdated() {
+    var invokedModelUpdatedParameters: (movies: Movies, Void)?
+    var invokedModelUpdatedParametersList = [(movies: Movies, Void)]()
+    func modelUpdated(movies: Movies) {
         invokedModelUpdated = true
         invokedModelUpdatedCount += 1
+        invokedModelUpdatedParameters = (movies, ())
+        invokedModelUpdatedParametersList.append((movies, ()))
     }
 }

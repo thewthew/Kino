@@ -9,8 +9,18 @@
 import Foundation
 
 enum HomeSceneViewModel {
-    //struct to be completed
-    struct Content {
 
+    struct Content: Hashable {
+        let section: [Section]
+    }
+
+    struct Section: Hashable {
+        let titleSection: String
+        let movies: [MovieCell]
+    }
+
+    struct MovieCell: Hashable {
+        let title: String
+        let posterUrlString: String
     }
 }

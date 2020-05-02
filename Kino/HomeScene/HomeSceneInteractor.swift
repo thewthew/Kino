@@ -24,8 +24,10 @@ extension HomeSceneInteractor: HomeSceneInteractorInput {
     func loadContent() {
         kinoAPI.getPopularMovies { (result: Result<MoviesInfo, APIServiceError>) in
             switch result {
-            case .success(let movie):
-                print(movie)
+            case .success(let moviesInfo):
+                DispatchQueue.main.async { [weak self] in
+                    self?.presenter?.modelUpdated(movies: moviesInfo.movies)
+                }
             case .failure(let error):
                 print(error)
             }

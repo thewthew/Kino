@@ -28,7 +28,7 @@ struct Movie: Codable {
     let popularity: Double
     let voteCount: Int
     let video: Bool
-    let posterPath: String
+    let imageURL: String
     let movieId: Int
     let adult: Bool
     let backdropPath: String?
@@ -44,7 +44,7 @@ struct Movie: Codable {
         case popularity
         case voteCount = "vote_count"
         case video
-        case posterPath = "poster_path"
+        case imageURL = "poster_path"
         case movieId = "id"
         case adult
         case backdropPath = "backdrop_path"
