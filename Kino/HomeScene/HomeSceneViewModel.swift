@@ -24,8 +24,3 @@ enum HomeSceneViewModel {
         let posterUrlString: String
     }
 }
-
-enum SectionType: String {
-    case popular
-    case trending
-}

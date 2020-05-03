@@ -12,6 +12,11 @@ protocol HomeSceneInteractorInput: class {
     func loadContent()
 }
 
+enum SectionType: String {
+    case popular
+    case trending
+}
+
 final class HomeSceneInteractor: KinoAPIInjected {
     var presenter: HomeScenePresenterInput?
     lazy var loadingQueue: KinoInteractorLoadingQueue? = {
@@ -37,6 +42,9 @@ extension HomeSceneInteractor: HomeSceneInteractorInput {
                 }
             case .failure(let error):
                 print("\(#function) \(error)")
+                DispatchQueue.main.async { [weak self] in
+                    self?.loadingQueue?.remove(task: .popularMovies)
+                }
             }
         }
 
@@ -50,6 +58,9 @@ extension HomeSceneInteractor: HomeSceneInteractorInput {
                 }
             case .failure(let error):
                 print("\(#function) \(error)")
+                DispatchQueue.main.async { [weak self] in
+                    self?.loadingQueue?.remove(task: .trendingMovies)
+                }
             }
         }
     }
@@ -61,6 +72,6 @@ extension HomeSceneInteractor: KinoInteractorLoadingQueueDelegate {
     }
 
     func didFinishLoading(queue: KinoInteractorLoadingQueue) {
-
+        presenter?.didFinishLoading()
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol HomeSceneViewControllerInput: class {
-    func viewModelUpdated(_ viewModel: HomeSceneViewModel.Content)
+    func viewModelUpdated(_ viewModel: [HomeSceneViewModel.Content])
 }
 
 final class HomeSceneViewController: UIViewController {
@@ -25,7 +25,7 @@ final class HomeSceneViewController: UIViewController {
     typealias Snapshot = NSDiffableDataSourceSnapshot<HomeSceneViewModel.Section, HomeSceneViewModel.MovieCell>
 
     var interactor: HomeSceneInteractorInput?
-    var viewModel: HomeSceneViewModel.Content? {
+    var viewModel: [HomeSceneViewModel.Content]? {
         didSet { updateViewContent() }
     }
 
@@ -52,10 +52,9 @@ final class HomeSceneViewController: UIViewController {
     }
 
     private func updateViewContent() {
-        guard let sectionViewModel = viewModel?.section else {
-            return
-        }
-        sections?.append(sectionViewModel)
+        viewModel?.forEach({ (viewModel) in
+            sections?.append(viewModel.section)
+        })
         applySnapshot(animatingDifferences: true)
     }
 
@@ -115,27 +114,16 @@ final class HomeSceneViewController: UIViewController {
         guard let sections = sections else {
             return
         }
-        let sortedSections = sections.sorted {
-            switch ($0.titleSection, $1.titleSection) {
-            case (.popular, .trending):
-                return true
-            case (.trending, .popular):
-                return false
-            default: return true
-            }
-        }
-
-        snapshot.appendSections(sortedSections)
-        sortedSections.forEach { section in
+        snapshot.appendSections(sections)
+        sections.forEach { section in
             snapshot.appendItems(section.movies, toSection: section)
         }
         dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
     }
-
 }
 
 extension HomeSceneViewController: HomeSceneViewControllerInput {
-    func viewModelUpdated(_ viewModel: HomeSceneViewModel.Content) {
+    func viewModelUpdated(_ viewModel: [HomeSceneViewModel.Content]) {
         self.viewModel = viewModel
     }
 }
