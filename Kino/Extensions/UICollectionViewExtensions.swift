@@ -17,6 +17,7 @@ extension UICollectionViewCellRegistrable {
     static var nibName: String {
         return Self.reusableID
     }
+
     static var reusableID: String {
         return String(describing: Self.self)
     }
@@ -27,8 +28,14 @@ extension UICollectionView {
         let nib = UINib(nibName: T.nibName, bundle: Bundle.main)
         self.register(nib, forCellWithReuseIdentifier: T.reusableID)
     }
+
     func registerHeaderFooterView<T: UICollectionViewCellRegistrable>(registrableClass: T.Type) {
         let nib = UINib(nibName: T.nibName, bundle: Bundle.main)
         self.register(nib, forCellWithReuseIdentifier: T.reusableID)
+    }
+
+    func registerSupplementaryView<T: UICollectionViewCellRegistrable>(registrableClass: T.Type, kind: String) {
+        let nib = UINib(nibName: T.nibName, bundle: Bundle.main)
+        self.register(nib, forSupplementaryViewOfKind: kind, withReuseIdentifier: T.reusableID)
     }
 }

@@ -12,7 +12,9 @@ protocol HomeSceneViewControllerInput: class {
     func viewModelUpdated(_ viewModel: HomeSceneViewModel.Content)
 }
 
-final class HomeSceneViewController: UICollectionViewController {
+final class HomeSceneViewController: UIViewController {
+
+    @IBOutlet weak var moviesCollectionView: UICollectionView!
 
     // MARK: - Properties
     private var sections: [HomeSceneViewModel.Section]?
@@ -27,11 +29,6 @@ final class HomeSceneViewController: UICollectionViewController {
         didSet { updateViewContent() }
     }
 
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        initScene()
-    }
-
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initScene()
@@ -43,10 +40,9 @@ final class HomeSceneViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.register(registrableClass: MovieCell.self)
-//        collectionView.register(registrableClass: SectionHeaderReusableView.self)
-//        let nib = UINib(nibName: "SectionHeaderReusableView", bundle: nil)
-//        collectionView.register(nib, forCellWithReuseIdentifier: SectionHeaderReusableView.reusableID)
+        moviesCollectionView.register(registrableClass: MovieCell.self)
+        moviesCollectionView.registerSupplementaryView(registrableClass: SectionHeaderReusableView.self,
+                                                       kind: UICollectionView.elementKindSectionHeader)
         configureLayout()
     }
 
@@ -61,45 +57,54 @@ final class HomeSceneViewController: UICollectionViewController {
     }
 
     func makeDataSource() -> DataSource {
-      let dataSource = DataSource(collectionView: collectionView,
-                                  cellProvider: { (collectionView, indexPath, movie) -> UICollectionViewCell? in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCell.reusableID, for: indexPath)
-            if let movieCell = cell as? MovieCell {
-                movieCell.model = movie
+      let dataSource =
+        DataSource(
+            collectionView: moviesCollectionView,
+            cellProvider: { (collectionView, indexPath, movie) -> UICollectionViewCell? in
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCell.reusableID, for: indexPath)
+                if let movieCell = cell as? MovieCell {
+                    movieCell.model = movie
+                }
+                return cell
+        })
+        dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
+            guard kind == UICollectionView.elementKindSectionHeader else {
+                return nil
             }
-            return cell
-      })
-      dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
-        guard kind == UICollectionView.elementKindSectionHeader else {
-          return nil
+            let section = dataSource.snapshot().sectionIdentifiers[indexPath.section]
+            let sectionHeaderView = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: SectionHeaderReusableView.reusableID,
+                for: indexPath) as? SectionHeaderReusableView
+            sectionHeaderView?.model = section
+            return sectionHeaderView
         }
-        let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
-        let view = collectionView.dequeueReusableSupplementaryView(
-          ofKind: kind,
-          withReuseIdentifier: SectionHeaderReusableView.reusableID,
-          for: indexPath) as? SectionHeaderReusableView
-        view?.titleLabel.text = section.titleSection
-        return view
-      }
       return dataSource
     }
 
     private func configureLayout() {
-      collectionView.collectionViewLayout =
-        UICollectionViewCompositionalLayout(sectionProvider: { (_, _)
-            -> NSCollectionLayoutSection? in
-        let size = NSCollectionLayoutSize(
-          widthDimension: NSCollectionLayoutDimension.fractionalWidth(1),
-          heightDimension: NSCollectionLayoutDimension.absolute(280)
-        )
-        let itemCount = 3
-        let item = NSCollectionLayoutItem(layoutSize: size)
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitem: item, count: itemCount)
-        let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)
-        section.interGroupSpacing = 10
-        return section
-      })
+        moviesCollectionView.collectionViewLayout =
+            UICollectionViewCompositionalLayout(sectionProvider: { (_, _) -> NSCollectionLayoutSection? in
+                let size = NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(1),
+                    heightDimension: .absolute(280)
+                )
+                let item = NSCollectionLayoutItem(layoutSize: size)
+                let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitem: item, count: 3)
+
+                let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                                        heightDimension: .estimated(44))
+                let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+                  layoutSize: headerSize,
+                  elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+
+                let section = NSCollectionLayoutSection(group: group)
+                section.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+                section.orthogonalScrollingBehavior = .groupPaging
+                section.boundarySupplementaryItems = [sectionHeader]
+
+                return section
+            })
     }
 
     func applySnapshot(animatingDifferences: Bool = true) {
