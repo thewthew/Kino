@@ -11,11 +11,11 @@ import Foundation
 enum HomeSceneViewModel {
 
     struct Content: Hashable {
-        let section: [Section]
+        let section: Section
     }
 
     struct Section: Hashable {
-        let titleSection: String
+        let titleSection: SectionType
         let movies: [MovieCell]
     }
 
@@ -23,4 +23,9 @@ enum HomeSceneViewModel {
         let title: String
         let posterUrlString: String
     }
+}
+
+enum SectionType: String {
+    case popular
+    case trending
 }

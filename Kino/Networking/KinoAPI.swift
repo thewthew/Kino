@@ -27,19 +27,23 @@ class KinoAPI {
         case bodyPart = "/exercisecategory"
     }
 
-    private func fetchResources<T: Decodable>(url: URL, completion: @escaping (Result<T, APIServiceError>) -> Void) {
+    private func fetchResources<T: Decodable>(url: URL,
+                                              query: [URLQueryItem]? = nil,
+                                              completion: @escaping (Result<T, APIServiceError>) -> Void) {
         guard var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
             completion(.failure(.invalidEndpoint))
             return
         }
-        let queryItems = [URLQueryItem(name: "api_key", value: apiKey)]
+        var queryItems = [URLQueryItem(name: "api_key", value: apiKey)]
+        if let otherQueryItems = query {
+            queryItems.append(contentsOf: otherQueryItems)
+        }
         urlComponents.queryItems = queryItems
         guard let url = urlComponents.url else {
             completion(.failure(.invalidEndpoint))
             return
         }
         let urlRequest = URLRequest(url: url)
-
         urlSession.dataTask(with: urlRequest) { (result) in
             switch result {
             case .success(let (response, data)):
@@ -60,13 +64,14 @@ class KinoAPI {
     }
 
     public func getPopularMovies(result: @escaping (Result<MoviesInfo, APIServiceError>) -> Void) {
-        let movieURL = baseURL.appendingPathComponent(Endpoint.discoverMovies.rawValue)
+        let discoverMovieURL = baseURL.appendingPathComponent(Endpoint.discoverMovies.rawValue)
         let queryItems = [URLQueryItem(name: "sort_by", value: "popularity.desc")]
-        var urlComponents = URLComponents(url: movieURL, resolvingAgainstBaseURL: true)
-        urlComponents?.queryItems = queryItems
-        guard let exerciseNameUrl = urlComponents?.url else {
-            return
-        }
-        fetchResources(url: exerciseNameUrl, completion: result)
+        fetchResources(url: discoverMovieURL, query: queryItems, completion: result)
+    }
+
+    public func getTrendingMovies(result: @escaping (Result<MoviesInfo, APIServiceError>) -> Void) {
+        let discoverMovieURL = baseURL.appendingPathComponent(Endpoint.discoverMovies.rawValue)
+        let queryItems = [URLQueryItem(name: "sort_by", value: "trending.desc")]
+        fetchResources(url: discoverMovieURL, query: queryItems, completion: result)
     }
 }

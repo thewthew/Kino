@@ -18,6 +18,6 @@ class SectionHeaderReusableView: UICollectionReusableView, UICollectionViewCellR
         }
     }
     private func config() {
-        titleLabel.text = model.titleSection
+        titleLabel.text = model.titleSection.rawValue
     }
 }

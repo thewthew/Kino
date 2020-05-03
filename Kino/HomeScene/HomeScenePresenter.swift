@@ -9,7 +9,9 @@
 import Foundation
 
 protocol HomeScenePresenterInput: class {
-    func modelUpdated(movies: Movies)
+    func modelUpdated(movies: Movies, title: SectionType)
+    func didStartLoading()
+    func didFinishLoading()
 }
 
 final class HomeScenePresenter {
@@ -25,15 +27,23 @@ final class HomeScenePresenter {
         }
     }
 
-    private func getSection(from movies: Movies) -> [HomeSceneViewModel.Section] {
-        let section = HomeSceneViewModel.Section(titleSection: "popular", movies: getCells(from: movies))
-        return [section]
+    private func getSection(from movies: Movies, title: SectionType) -> HomeSceneViewModel.Section {
+        let section = HomeSceneViewModel.Section(titleSection: title, movies: getCells(from: movies))
+        return section
     }
 }
 
 extension HomeScenePresenter: HomeScenePresenterInput {
-    func modelUpdated(movies: Movies) {
-        let viewModel = HomeSceneViewModel.Content(section: getSection(from: movies))
+    func didStartLoading() {
+
+    }
+
+    func didFinishLoading() {
+
+    }
+
+    func modelUpdated(movies: Movies, title: SectionType) {
+        let viewModel = HomeSceneViewModel.Content(section: getSection(from: movies, title: title))
         viewController?.viewModelUpdated(viewModel)
     }
 }

@@ -28,7 +28,7 @@ struct Movie: Codable {
     let popularity: Double
     let voteCount: Int
     let video: Bool
-    let imageURL: String
+    let imageURL: String?
     let movieId: Int
     let adult: Bool
     let backdropPath: String?

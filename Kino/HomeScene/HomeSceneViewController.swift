@@ -17,7 +17,7 @@ final class HomeSceneViewController: UIViewController {
     @IBOutlet weak var moviesCollectionView: UICollectionView!
 
     // MARK: - Properties
-    private var sections: [HomeSceneViewModel.Section]?
+    private var sections: [HomeSceneViewModel.Section]? = [HomeSceneViewModel.Section]()
     private lazy var dataSource = makeDataSource()
 
     // MARK: - Value Types
@@ -52,8 +52,11 @@ final class HomeSceneViewController: UIViewController {
     }
 
     private func updateViewContent() {
-        sections = viewModel?.section
-        applySnapshot(animatingDifferences: false)
+        guard let sectionViewModel = viewModel?.section else {
+            return
+        }
+        sections?.append(sectionViewModel)
+        applySnapshot(animatingDifferences: true)
     }
 
     func makeDataSource() -> DataSource {
@@ -112,8 +115,18 @@ final class HomeSceneViewController: UIViewController {
         guard let sections = sections else {
             return
         }
-        snapshot.appendSections(sections)
-        sections.forEach { section in
+        let sortedSections = sections.sorted {
+            switch ($0.titleSection, $1.titleSection) {
+            case (.popular, .trending):
+                return true
+            case (.trending, .popular):
+                return false
+            default: return true
+            }
+        }
+
+        snapshot.appendSections(sortedSections)
+        sortedSections.forEach { section in
             snapshot.appendItems(section.movies, toSection: section)
         }
         dataSource.apply(snapshot, animatingDifferences: animatingDifferences)

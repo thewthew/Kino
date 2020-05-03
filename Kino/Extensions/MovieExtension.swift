@@ -10,6 +10,11 @@ import Foundation
 
 extension Movie {
     var originalImageUrl: String {
-        return "https://image.tmdb.org/t/p/original\(imageURL)"
+        // FIXME: 🧏‍♂️ fix if imageURL is nil
+        if let imageURL = imageURL {
+            return "https://image.tmdb.org/t/p/original\(imageURL)"
+        } else {
+            return ""
+        }
     }
 }
