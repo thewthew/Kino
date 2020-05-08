@@ -41,6 +41,7 @@ final class HomeSceneViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         moviesCollectionView.register(registrableClass: MovieCell.self)
+        moviesCollectionView.register(registrableClass: CategoryCell.self)
         moviesCollectionView.registerSupplementaryView(registrableClass: SectionHeaderReusableView.self,
                                                        kind: UICollectionView.elementKindSectionHeader)
         configureLayout()
@@ -63,12 +64,34 @@ final class HomeSceneViewController: UIViewController {
         DataSource(
             collectionView: moviesCollectionView,
             cellProvider: { (collectionView, indexPath, movie) -> UICollectionViewCell? in
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCell.reusableID, for: indexPath)
-                if let movieCell = cell as? MovieCell {
-                    movieCell.model = movie
+                let sectionType = SectionType.allCases[indexPath.section]
+                switch sectionType {
+                case .popular:
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCell.reusableID,
+                                                                  for: indexPath)
+                    if let movieCell = cell as? MovieCell {
+                        movieCell.model = movie
+                    }
+                    return cell
+
+                case .trending:
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCell.reusableID,
+                                                                  for: indexPath)
+                    if let movieCell = cell as? MovieCell {
+                        movieCell.model = movie
+                    }
+                    return cell
+
+                case .movieList:
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.reusableID,
+                                                                  for: indexPath)
+                    if let movieCell = cell as? CategoryCell {
+                        movieCell.model = movie
+                    }
+                    return cell
                 }
-                return cell
         })
+
         dataSource.supplementaryViewProvider = { collectionView, kind, indexPath in
             guard kind == UICollectionView.elementKindSectionHeader else {
                 return nil

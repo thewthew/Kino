@@ -17,6 +17,7 @@ class KinoInteractorLoadingQueue {
     enum LoadingTask {
         case popularMovies
         case trendingMovies
+        case movieCategoryList
     }
 
     private weak var delegate: KinoInteractorLoadingQueueDelegate?

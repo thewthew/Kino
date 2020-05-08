@@ -32,4 +32,14 @@ class HomeScenePresenterSpy: HomeScenePresenterInput {
         invokedDidFinishLoading = true
         invokedDidFinishLoadingCount += 1
     }
+    var invokedModelCategoryUpdated = false
+    var invokedModelCategoryUpdatedCount = 0
+    var invokedModelCategoryUpdatedParameters: (movieList: MovieList, title: SectionType)?
+    var invokedModelCategoryUpdatedParametersList = [(movieList: MovieList, title: SectionType)]()
+    func modelCategoryUpdated(movieList: MovieList, title: SectionType) {
+        invokedModelCategoryUpdated = true
+        invokedModelCategoryUpdatedCount += 1
+        invokedModelCategoryUpdatedParameters = (movieList, title)
+        invokedModelCategoryUpdatedParametersList.append((movieList, title))
+    }
 }

@@ -18,9 +18,7 @@ class CustomImageView: UIImageView {
 
     func removeAnimation() {
         let animationViews = subviews.filter { $0 is AnimationView }
-        animationViews.forEach { (view) in
-            view.removeFromSuperview()
-        }
+        animationViews.forEach { $0.removeFromSuperview() }
     }
 
     func addAnimation() {
@@ -30,6 +28,9 @@ class CustomImageView: UIImageView {
             return
         }
         anim.contentMode = .scaleAspectFit
+        anim.play()
+        anim.loopMode = .loop
+
         addSubview(anim)
 
         anim.translatesAutoresizingMaskIntoConstraints = false
@@ -40,8 +41,6 @@ class CustomImageView: UIImageView {
             ]
         )
         anim.center = center
-        anim.play()
-        anim.loopMode = .loop
     }
 
     func loadImageUsingUrl(urlString: String) {
@@ -55,28 +54,30 @@ class CustomImageView: UIImageView {
             return
         }
 
-        if let imageUrlString = imageUrlString, let url = URL(string: imageUrlString) {
-            URLSession.shared.dataTask(with: url, completionHandler: {(data, _, error) in
-                if error != nil {
-                    print(error?.localizedDescription ?? "error")
+        guard let imageUrlString = imageUrlString, let url = URL(string: imageUrlString) else {
+            removeAnimation()
+            return
+        }
+        URLSession.shared.dataTask(with: url, completionHandler: {(data, _, error) in
+            if error != nil {
+                print(error?.localizedDescription ?? "error")
+                return
+            }
+
+            DispatchQueue.main.async { [weak self] in
+                guard let data = data, let imageToCache = UIImage(data: data), let self = self else {
                     return
                 }
-
-                DispatchQueue.main.async { [weak self] in
-                    guard let data = data, let imageToCache = UIImage(data: data), let self = self else {
-                        return
-                    }
-                    if self.imageUrlString == urlString {
-                        self.removeAnimation()
-                        UIView.transition(with: self,
-                                          duration: 0.3,
-                                          options: .transitionCrossDissolve,
-                                          animations: { self.image = imageToCache },
-                                          completion: nil)
-                    }
-                    imageCache.setObject(imageToCache, forKey: urlString as AnyObject)
+                if self.imageUrlString == urlString {
+                    self.removeAnimation()
+                    UIView.transition(with: self,
+                                      duration: 0.3,
+                                      options: .transitionCrossDissolve,
+                                      animations: { self.image = imageToCache },
+                                      completion: nil)
                 }
-            }).resume()
-        }
+                imageCache.setObject(imageToCache, forKey: urlString as AnyObject)
+            }
+        }).resume()
     }
 }

@@ -22,5 +22,12 @@ enum HomeSceneViewModel {
     struct MovieCell: Hashable {
         let title: String
         let posterUrlString: String
+        let genreID: Int?
+
+        init(title: String, posterUrlString: String, genreID: Int? = 0) {
+            self.title = title
+            self.posterUrlString = posterUrlString
+            self.genreID = genreID
+        }
     }
 }

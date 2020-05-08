@@ -22,9 +22,10 @@ class KinoAPI {
     private let apiKey = "5473ad565413781b8af8e756e42d37de"
 
     enum Endpoint: String, CaseIterable {
-        case movie = "/movie/550"
+        case movieExample   = "/movie/550"
         case discoverMovies = "/discover/movie"
-        case bodyPart = "/exercisecategory"
+        case bodyPart       = "/exercisecategory"
+        case movieList      = "/genre/movie/list"
     }
 
     private func fetchResources<T: Decodable>(url: URL,
@@ -44,7 +45,8 @@ class KinoAPI {
             return
         }
         let urlRequest = URLRequest(url: url)
-        urlSession.dataTask(with: urlRequest) { (result) in
+        urlSession.dataTask(with: urlRequest) { [weak self] (result) in
+            guard let self = self else { return }
             switch result {
             case .success(let (response, data)):
                 guard let statusCode = (response as? HTTPURLResponse)?.statusCode, 200..<299 ~= statusCode else {
@@ -73,5 +75,10 @@ class KinoAPI {
         let discoverMovieURL = baseURL.appendingPathComponent(Endpoint.discoverMovies.rawValue)
         let queryItems = [URLQueryItem(name: "sort_by", value: "trending.desc")]
         fetchResources(url: discoverMovieURL, query: queryItems, completion: result)
+    }
+
+    public func getMovieListCategory(result: @escaping (Result<MovieList, APIServiceError>) -> Void) {
+        let movieListURL = baseURL.appendingPathComponent(Endpoint.movieList.rawValue)
+        fetchResources(url: movieListURL, completion: result)
     }
 }

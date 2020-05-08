@@ -12,9 +12,10 @@ protocol HomeSceneInteractorInput: class {
     func loadContent()
 }
 
-enum SectionType: String {
-    case popular
-    case trending
+enum SectionType: String, CaseIterable {
+    case movieList = "movie lists"
+    case popular = "popular movies"
+    case trending = "trending movies"
 }
 
 final class HomeSceneInteractor: KinoAPIInjected {
@@ -22,18 +23,16 @@ final class HomeSceneInteractor: KinoAPIInjected {
     lazy var loadingQueue: KinoInteractorLoadingQueue? = {
         return KinoInteractorLoadingQueue(delegate: self)
     }()
-    var movies: Movies!
+    var movies: Movies
 
     init(presenter: HomeScenePresenterInput?) {
         self.presenter = presenter
         self.movies = Movies()
     }
-}
 
-extension HomeSceneInteractor: HomeSceneInteractorInput {
-    func loadContent() {
+    private func getPopularMovies() {
         loadingQueue?.add(.popularMovies)
-        kinoAPI.getPopularMovies { (result: Result<MoviesInfo, APIServiceError>) in
+        kinoAPI.getPopularMovies { result in
             switch result {
             case .success(let moviesInfo):
                 DispatchQueue.main.async { [weak self] in
@@ -47,9 +46,11 @@ extension HomeSceneInteractor: HomeSceneInteractorInput {
                 }
             }
         }
+    }
 
+    private func getTrendingMovies() {
         loadingQueue?.add(.trendingMovies)
-        kinoAPI.getTrendingMovies { (result: Result<MoviesInfo, APIServiceError>) in
+        kinoAPI.getTrendingMovies { result in
             switch result {
             case .success(let moviesInfo):
                 DispatchQueue.main.async { [weak self] in
@@ -63,6 +64,32 @@ extension HomeSceneInteractor: HomeSceneInteractorInput {
                 }
             }
         }
+    }
+
+    private func getMoviesListCategories() {
+        loadingQueue?.add(.movieCategoryList)
+        kinoAPI.getMovieListCategory { (result) in
+            switch result {
+            case .success(let movieList):
+                DispatchQueue.main.async { [weak self] in
+                    self?.presenter?.modelCategoryUpdated(movieList: movieList, title: .movieList)
+                    self?.loadingQueue?.remove(task: .movieCategoryList)
+                }
+            case .failure(let error):
+                print("\(#function) \(error)")
+                DispatchQueue.main.async { [weak self] in
+                    self?.loadingQueue?.remove(task: .movieCategoryList)
+                }
+            }
+        }
+    }
+}
+
+extension HomeSceneInteractor: HomeSceneInteractorInput {
+    func loadContent() {
+        getPopularMovies()
+        getTrendingMovies()
+        getMoviesListCategories()
     }
 }
 
