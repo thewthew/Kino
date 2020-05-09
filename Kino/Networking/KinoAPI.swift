@@ -77,7 +77,7 @@ class KinoAPI {
         fetchResources(url: discoverMovieURL, query: queryItems, completion: result)
     }
 
-    public func getMovieListCategory(result: @escaping (Result<MovieList, APIServiceError>) -> Void) {
+    public func getMovieListCategory(result: @escaping (Result<MoviesCategory, APIServiceError>) -> Void) {
         let movieListURL = baseURL.appendingPathComponent(Endpoint.movieList.rawValue)
         fetchResources(url: movieListURL, completion: result)
     }

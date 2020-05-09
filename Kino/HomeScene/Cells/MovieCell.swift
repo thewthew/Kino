@@ -21,6 +21,10 @@ class MovieCell: UICollectionViewCell, UICollectionViewCellRegistrable {
 
     private func config() {
         movieTitleLabel.text = model.title
-        movieImageView.loadImageUsingUrl(urlString: model.posterUrlString)
+        if let url = model.posterUrlString {
+            movieImageView.loadImage(with: url)
+        } else {
+            movieImageView.image = UIImage(named: "default-movie")
+        }
     }
 }

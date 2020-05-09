@@ -9,7 +9,7 @@
 import Foundation
 
 typealias Genres = [Genre]
-struct MovieList: Codable {
+struct MoviesCategory: Codable {
     let genres: Genres
 }
 

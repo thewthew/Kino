@@ -12,7 +12,7 @@ protocol HomeScenePresenterInput: class {
     func modelUpdated(movies: Movies, title: SectionType)
     func didStartLoading()
     func didFinishLoading()
-    func modelCategoryUpdated(movieList: MovieList, title: SectionType)
+    func modelCategoryUpdated(movieCategories: MoviesCategory, title: SectionType)
 }
 
 final class HomeScenePresenter {
@@ -31,13 +31,13 @@ final class HomeScenePresenter {
         return HomeSceneViewModel.Section(titleSection: title, movies: getCells(from: movies))
     }
 
-    private func getCategoriesCells(from list: MovieList) -> [HomeSceneViewModel.MovieCell] {
+    private func getCategoriesCells(from list: MoviesCategory) -> [HomeSceneViewModel.MovieCell] {
         return list.genres.map {
-            HomeSceneViewModel.MovieCell(title: $0.name, posterUrlString: "", genreID: $0.genreID)
+            HomeSceneViewModel.MovieCell(title: $0.name, genreID: $0.genreID)
         }
     }
 
-    private func getCategory(from categories: MovieList, title: SectionType) -> HomeSceneViewModel.Section {
+    private func getCategory(from categories: MoviesCategory, title: SectionType) -> HomeSceneViewModel.Section {
         return HomeSceneViewModel.Section(titleSection: title, movies: getCategoriesCells(from: categories))
     }
 }
@@ -57,8 +57,8 @@ extension HomeScenePresenter: HomeScenePresenterInput {
         movieSectionViewModels.append(viewModel)
     }
 
-    func modelCategoryUpdated(movieList: MovieList, title: SectionType) {
-        let viewModel = HomeSceneViewModel.Content(section: getCategory(from: movieList, title: title))
+    func modelCategoryUpdated(movieCategories: MoviesCategory, title: SectionType) {
+        let viewModel = HomeSceneViewModel.Content(section: getCategory(from: movieCategories, title: title))
         movieSectionViewModels.append(viewModel)
     }
 }

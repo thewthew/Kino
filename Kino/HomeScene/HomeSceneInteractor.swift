@@ -13,9 +13,9 @@ protocol HomeSceneInteractorInput: class {
 }
 
 enum SectionType: String, CaseIterable, Comparable {
-    case popular = "popular movies"
-    case movieList = "movie lists"
-    case trending = "trending movies"
+    case popular = "Popular"
+    case moviesCategory = "Collection"
+    case trending = "Trending"
 
     static func < (lhs: SectionType, rhs: SectionType) -> Bool {
         return lhs.sortOrder < rhs.sortOrder
@@ -23,7 +23,7 @@ enum SectionType: String, CaseIterable, Comparable {
 
     private var sortOrder: Int {
         switch self {
-        case .movieList:
+        case .moviesCategory:
             return 0
         case .popular:
             return 1
@@ -87,7 +87,7 @@ final class HomeSceneInteractor: KinoAPIInjected {
             switch result {
             case .success(let movieList):
                 DispatchQueue.main.async { [weak self] in
-                    self?.presenter?.modelCategoryUpdated(movieList: movieList, title: .movieList)
+                    self?.presenter?.modelCategoryUpdated(movieCategories: movieList, title: .moviesCategory)
                     self?.loadingQueue?.remove(task: .movieCategoryList)
                 }
             case .failure(let error):

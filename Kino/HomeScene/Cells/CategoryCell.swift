@@ -11,6 +11,7 @@ import UIKit
 class CategoryCell: UICollectionViewCell, UICollectionViewCellRegistrable {
 
     @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var categoryImageView: UIImageView!
 
     var model: HomeSceneViewModel.MovieCell! {
         didSet {
@@ -20,5 +21,6 @@ class CategoryCell: UICollectionViewCell, UICollectionViewCellRegistrable {
 
     private func config() {
         categoryLabel.text = model.title
+        categoryImageView.image = UIImage(named: model.title)
     }
 }

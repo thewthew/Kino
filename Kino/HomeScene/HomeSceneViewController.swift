@@ -67,24 +67,21 @@ final class HomeSceneViewController: UIViewController {
                 let sectionType = SectionType.allCases.sorted()[indexPath.section]
                 switch sectionType {
                 case .popular:
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCell.reusableID,
-                                                                  for: indexPath)
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCell.reusableID, for: indexPath)
                     if let movieCell = cell as? MovieCell {
                         movieCell.model = movie
                     }
                     return cell
 
                 case .trending:
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCell.reusableID,
-                                                                  for: indexPath)
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCell.reusableID, for: indexPath)
                     if let movieCell = cell as? MovieCell {
                         movieCell.model = movie
                     }
                     return cell
 
-                case .movieList:
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.reusableID,
-                                                                  for: indexPath)
+                case .moviesCategory:
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.reusableID, for: indexPath)
                     if let movieCell = cell as? CategoryCell {
                         movieCell.model = movie
                     }
@@ -97,10 +94,10 @@ final class HomeSceneViewController: UIViewController {
                 return nil
             }
             let section = dataSource.snapshot().sectionIdentifiers[indexPath.section]
-            let sectionHeaderView = collectionView.dequeueReusableSupplementaryView(
-                ofKind: kind,
-                withReuseIdentifier: SectionHeaderReusableView.reusableID,
-                for: indexPath) as? SectionHeaderReusableView
+            let sectionHeaderView =
+                collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                withReuseIdentifier: SectionHeaderReusableView.reusableID,
+                                                                for: indexPath) as? SectionHeaderReusableView
             sectionHeaderView?.model = section
             return sectionHeaderView
         }
@@ -109,27 +106,52 @@ final class HomeSceneViewController: UIViewController {
 
     private func configureLayout() {
         moviesCollectionView.collectionViewLayout =
-            UICollectionViewCompositionalLayout(sectionProvider: { (_, _) -> NSCollectionLayoutSection? in
-                let size = NSCollectionLayoutSize(
-                    widthDimension: .fractionalWidth(1),
-                    heightDimension: .absolute(280)
-                )
-                let item = NSCollectionLayoutItem(layoutSize: size)
-                let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitem: item, count: 3)
-
-                let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                                        heightDimension: .estimated(44))
-                let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
-                  layoutSize: headerSize,
-                  elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
-
-                let section = NSCollectionLayoutSection(group: group)
-                section.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
-                section.orthogonalScrollingBehavior = .groupPaging
-                section.boundarySupplementaryItems = [sectionHeader]
-
-                return section
+            UICollectionViewCompositionalLayout(sectionProvider: { [weak self] (sectionIndex: Int, _) -> NSCollectionLayoutSection? in
+                let sectionLayoutKind = SectionType.allCases.sorted()[sectionIndex]
+                switch sectionLayoutKind {
+                case .popular, .trending:
+                    return self?.generateMoviesLayoutSection()
+                case .moviesCategory:
+                    return self?.generateMoviesCategoryLayoutSection()
+                }
             })
+    }
+
+    private func generateMoviesLayoutSection() -> NSCollectionLayoutSection? {
+        let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.8), heightDimension: .absolute(280))
+
+        let item = NSCollectionLayoutItem(layoutSize: size)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitem: item, count: 2)
+
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(66))
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
+                                                                        elementKind: UICollectionView.elementKindSectionHeader,
+                                                                        alignment: .top)
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+        section.orthogonalScrollingBehavior = .continuous
+        section.boundarySupplementaryItems = [sectionHeader]
+
+        return section
+    }
+
+    private func generateMoviesCategoryLayoutSection() -> NSCollectionLayoutSection? {
+        let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(100))
+
+        let item = NSCollectionLayoutItem(layoutSize: size)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: size, subitem: item, count: 4)
+
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(66))
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
+                                                                        elementKind: UICollectionView.elementKindSectionHeader,
+                                                                        alignment: .top)
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
+        section.boundarySupplementaryItems = [sectionHeader]
+
+        return section
     }
 
     func applySnapshot(animatingDifferences: Bool = true) {

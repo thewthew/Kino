@@ -10,12 +10,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SectionHeaderReusableView" id="2UF-b5-t0b" customClass="SectionHeaderReusableView" customModule="Kino" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="66"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Yk-Vq-uVU">
-                    <rect key="frame" x="8" y="8" width="398" height="28"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <rect key="frame" x="8" y="22" width="398" height="36"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -23,7 +23,7 @@
             <constraints>
                 <constraint firstItem="9Yk-Vq-uVU" firstAttribute="leading" secondItem="2UF-b5-t0b" secondAttribute="leading" constant="8" id="84M-NI-urY"/>
                 <constraint firstItem="GVP-xU-QW1" firstAttribute="bottom" secondItem="9Yk-Vq-uVU" secondAttribute="bottom" constant="8" id="K9q-Z9-19n"/>
-                <constraint firstItem="9Yk-Vq-uVU" firstAttribute="top" secondItem="2UF-b5-t0b" secondAttribute="top" constant="8" id="hAa-8S-KU2"/>
+                <constraint firstItem="9Yk-Vq-uVU" firstAttribute="top" secondItem="2UF-b5-t0b" secondAttribute="top" constant="22" id="hAa-8S-KU2"/>
                 <constraint firstAttribute="trailing" secondItem="9Yk-Vq-uVU" secondAttribute="trailing" constant="8" id="hMr-rB-KTX"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="GVP-xU-QW1"/>
