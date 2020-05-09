@@ -7,6 +7,7 @@ target 'Kino' do
 
   # Pods for Kino
   pod 'SwiftLint'
+  pod 'OHHTTPStubs/Swift', '8.0.0'
 
   target 'KinoTests' do
     inherit! :search_paths

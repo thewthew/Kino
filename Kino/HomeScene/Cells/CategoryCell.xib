@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="2zE-e7-Kh8" customClass="CategoryCell" customModule="Kino" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="FZ4-6Q-6ic">
+                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qeF-zp-qoy">
+                        <rect key="frame" x="1" y="1" width="98" height="98"/>
+                    </imageView>
+                    <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YcQ-cm-Ebl">
+                        <rect key="frame" x="1" y="1" width="98" height="98"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Documentary" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nto-Ax-wxO">
+                        <rect key="frame" x="2" y="40" width="96" height="20.5"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="qeF-zp-qoy" secondAttribute="bottom" constant="1" id="ASa-dr-gc5"/>
+                    <constraint firstItem="YcQ-cm-Ebl" firstAttribute="leading" secondItem="FZ4-6Q-6ic" secondAttribute="leading" constant="1" id="BPw-lf-0ZR"/>
+                    <constraint firstItem="nto-Ax-wxO" firstAttribute="centerX" secondItem="FZ4-6Q-6ic" secondAttribute="centerX" id="Ed5-d7-qsX"/>
+                    <constraint firstItem="qeF-zp-qoy" firstAttribute="leading" secondItem="FZ4-6Q-6ic" secondAttribute="leading" constant="1" id="FJL-qL-vfU"/>
+                    <constraint firstItem="qeF-zp-qoy" firstAttribute="top" secondItem="FZ4-6Q-6ic" secondAttribute="top" constant="1" id="Jzl-Il-1Rw"/>
+                    <constraint firstItem="nto-Ax-wxO" firstAttribute="leading" secondItem="FZ4-6Q-6ic" secondAttribute="leading" constant="2" id="Lza-i6-XIR"/>
+                    <constraint firstItem="YcQ-cm-Ebl" firstAttribute="top" secondItem="FZ4-6Q-6ic" secondAttribute="top" constant="1" id="WS6-TS-0La"/>
+                    <constraint firstAttribute="trailing" secondItem="qeF-zp-qoy" secondAttribute="trailing" constant="1" id="XaA-GH-cR5"/>
+                    <constraint firstAttribute="trailing" secondItem="YcQ-cm-Ebl" secondAttribute="trailing" constant="1" id="dNO-bF-N8b"/>
+                    <constraint firstAttribute="bottom" secondItem="YcQ-cm-Ebl" secondAttribute="bottom" constant="1" id="gYP-tD-EW9"/>
+                    <constraint firstItem="nto-Ax-wxO" firstAttribute="centerY" secondItem="FZ4-6Q-6ic" secondAttribute="centerY" id="hZ0-el-G8Z"/>
+                    <constraint firstAttribute="trailing" secondItem="nto-Ax-wxO" secondAttribute="trailing" constant="2" id="wQs-Ic-TyH"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="284" height="118"/>
+            <connections>
+                <outlet property="categoryImageView" destination="qeF-zp-qoy" id="c9s-rb-b7v"/>
+                <outlet property="categoryLabel" destination="nto-Ax-wxO" id="934-hq-6Mp"/>
+            </connections>
+            <point key="canvasLocation" x="301.44927536231887" y="131.25"/>
+        </collectionViewCell>
+    </objects>
+</document>
