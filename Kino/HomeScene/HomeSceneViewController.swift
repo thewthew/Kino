@@ -64,7 +64,7 @@ final class HomeSceneViewController: UIViewController {
         DataSource(
             collectionView: moviesCollectionView,
             cellProvider: { (collectionView, indexPath, movie) -> UICollectionViewCell? in
-                let sectionType = SectionType.allCases[indexPath.section]
+                let sectionType = SectionType.allCases.sorted()[indexPath.section]
                 switch sectionType {
                 case .popular:
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCell.reusableID,

@@ -12,10 +12,25 @@ protocol HomeSceneInteractorInput: class {
     func loadContent()
 }
 
-enum SectionType: String, CaseIterable {
-    case movieList = "movie lists"
+enum SectionType: String, CaseIterable, Comparable {
     case popular = "popular movies"
+    case movieList = "movie lists"
     case trending = "trending movies"
+
+    static func < (lhs: SectionType, rhs: SectionType) -> Bool {
+        return lhs.sortOrder < rhs.sortOrder
+    }
+
+    private var sortOrder: Int {
+        switch self {
+        case .movieList:
+            return 0
+        case .popular:
+            return 1
+        case .trending:
+            return 2
+        }
+    }
 }
 
 final class HomeSceneInteractor: KinoAPIInjected {

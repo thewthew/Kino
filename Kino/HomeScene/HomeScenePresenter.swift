@@ -48,19 +48,8 @@ extension HomeScenePresenter: HomeScenePresenterInput {
     }
 
     func didFinishLoading() {
-        let movieSortedSections = movieSectionViewModels.sorted {
-            switch ($0.section.titleSection, $1.section.titleSection) {
-            case (.movieList, .popular):
-                return true
-            case (.movieList, .trending):
-                return true
-            case (.popular, .trending):
-                return true
-            default: return false
-            }
-        }
-
-        viewController?.viewModelUpdated(movieSortedSections)
+        movieSectionViewModels.sort { $0.section.titleSection < $1.section.titleSection }
+        viewController?.viewModelUpdated(movieSectionViewModels)
     }
 
     func modelUpdated(movies: Movies, title: SectionType) {
