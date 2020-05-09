@@ -51,7 +51,7 @@ final class HomeSceneInteractor: KinoAPIInjected {
             switch result {
             case .success(let moviesInfo):
                 DispatchQueue.main.async { [weak self] in
-                    self?.presenter?.modelUpdated(movies: moviesInfo.movies, title: .popular)
+                    self?.presenter?.popularMoviesModelUpdated(movies: moviesInfo.movies, title: .popular)
                     self?.loadingQueue?.remove(task: .popularMovies)
                 }
             case .failure(let error):
@@ -69,7 +69,7 @@ final class HomeSceneInteractor: KinoAPIInjected {
             switch result {
             case .success(let moviesInfo):
                 DispatchQueue.main.async { [weak self] in
-                    self?.presenter?.modelUpdated(movies: moviesInfo.movies, title: .trending)
+                    self?.presenter?.trendingMoviesModelUpdated(movies: moviesInfo.movies, title: .trending)
                     self?.loadingQueue?.remove(task: .trendingMovies)
                 }
             case .failure(let error):

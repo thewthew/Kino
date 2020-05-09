@@ -24,7 +24,6 @@ class KinoAPI {
     enum Endpoint: String, CaseIterable {
         case movieExample   = "/movie/550"
         case discoverMovies = "/discover/movie"
-        case bodyPart       = "/exercisecategory"
         case movieList      = "/genre/movie/list"
     }
 

@@ -9,10 +9,11 @@
 import Foundation
 
 protocol HomeScenePresenterInput: class {
-    func modelUpdated(movies: Movies, title: SectionType)
+    func trendingMoviesModelUpdated(movies: Movies, title: SectionType)
+    func popularMoviesModelUpdated(movies: Movies, title: SectionType)
+    func modelCategoryUpdated(movieCategories: MoviesCategory, title: SectionType)
     func didStartLoading()
     func didFinishLoading()
-    func modelCategoryUpdated(movieCategories: MoviesCategory, title: SectionType)
 }
 
 final class HomeScenePresenter {
@@ -44,7 +45,7 @@ final class HomeScenePresenter {
 
 extension HomeScenePresenter: HomeScenePresenterInput {
     func didStartLoading() {
-
+        // TODO: start loading indicator
     }
 
     func didFinishLoading() {
@@ -52,7 +53,12 @@ extension HomeScenePresenter: HomeScenePresenterInput {
         viewController?.viewModelUpdated(movieSectionViewModels)
     }
 
-    func modelUpdated(movies: Movies, title: SectionType) {
+    func trendingMoviesModelUpdated(movies: Movies, title: SectionType) {
+        let viewModel = HomeSceneViewModel.Content(section: getSection(from: movies, title: title))
+        movieSectionViewModels.append(viewModel)
+    }
+
+    func popularMoviesModelUpdated(movies: Movies, title: SectionType) {
         let viewModel = HomeSceneViewModel.Content(section: getSection(from: movies, title: title))
         movieSectionViewModels.append(viewModel)
     }
