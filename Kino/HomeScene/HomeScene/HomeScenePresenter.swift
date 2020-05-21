@@ -25,7 +25,7 @@ final class HomeScenePresenter {
     }
 
     private func getCells(from movies: Movies) -> [HomeSceneViewModel.MovieCell] {
-        return movies.map { HomeSceneViewModel.MovieCell(title: $0.title, posterUrlString: $0.originalImageUrl) }
+        return movies.map { HomeSceneViewModel.MovieCell(title: $0.title, posterUrlString: $0.imageFullPathURL) }
     }
 
     private func getSection(from movies: Movies, title: SectionType) -> HomeSceneViewModel.Section {

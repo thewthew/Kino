@@ -43,7 +43,12 @@ class CustomImageView: UIImageView {
         anim.center = center
     }
 
-    func loadImage(with urlString: String) {
+    func loadImage(with urlString: String?) {
+        guard let urlString = urlString else {
+            image = UIImage(named: "default-movie")
+            return
+        }
+
         imageUrlString = urlString
         image = nil
         addAnimation()

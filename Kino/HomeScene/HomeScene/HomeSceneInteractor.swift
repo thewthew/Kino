@@ -10,6 +10,8 @@ import Foundation
 
 protocol HomeSceneInteractorInput: class {
     func loadContent()
+    var genres: Genres { get }
+    var moviesList: [SectionType: Movies] { get }
 }
 
 enum SectionType: String, CaseIterable, Comparable {
@@ -38,11 +40,13 @@ final class HomeSceneInteractor: KinoAPIInjected {
     lazy var loadingQueue: KinoInteractorLoadingQueue? = {
         return KinoInteractorLoadingQueue(delegate: self)
     }()
-    var movies: Movies
+    var genres: Genres
+    var moviesList: [SectionType: Movies]
 
     init(presenter: HomeScenePresenterInput?) {
         self.presenter = presenter
-        self.movies = Movies()
+        self.genres = Genres()
+        self.moviesList = [SectionType: Movies]()
     }
 
     private func getPopularMovies() {
@@ -51,6 +55,7 @@ final class HomeSceneInteractor: KinoAPIInjected {
             switch result {
             case .success(let moviesInfo):
                 DispatchQueue.main.async { [weak self] in
+                    self?.moviesList.updateValue(moviesInfo.movies, forKey: .popular)
                     self?.presenter?.popularMoviesModelUpdated(movies: moviesInfo.movies, title: .popular)
                     self?.loadingQueue?.remove(task: .popularMovies)
                 }
@@ -69,6 +74,7 @@ final class HomeSceneInteractor: KinoAPIInjected {
             switch result {
             case .success(let moviesInfo):
                 DispatchQueue.main.async { [weak self] in
+                    self?.moviesList.updateValue(moviesInfo.movies, forKey: .trending)
                     self?.presenter?.trendingMoviesModelUpdated(movies: moviesInfo.movies, title: .trending)
                     self?.loadingQueue?.remove(task: .trendingMovies)
                 }
@@ -87,6 +93,7 @@ final class HomeSceneInteractor: KinoAPIInjected {
             switch result {
             case .success(let movieList):
                 DispatchQueue.main.async { [weak self] in
+                    self?.genres.append(contentsOf: movieList.genres)
                     self?.presenter?.modelCategoryUpdated(movieCategories: movieList, title: .moviesCategory)
                     self?.loadingQueue?.remove(task: .movieCategoryList)
                 }

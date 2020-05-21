@@ -32,6 +32,16 @@ extension String {
         return parseDate(format: "dd/MM/yyyy")
     }
 
+    /// Date with format MMM d, yyyy
+    func formatReleaseDate() -> String {
+        return self.formatFromWSDate(format: "MMM d, yyyy")
+    }
+
+    /// Date with format YYYY
+    func formatYearReleaseDate() -> String {
+        return self.formatFromWSDate(format: "YYYY")
+    }
+
     func formatFromWSDate(format: String) -> String {
         guard let dateFromString = parseWSDate() else {
             return ""

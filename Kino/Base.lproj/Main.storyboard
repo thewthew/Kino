@@ -33,7 +33,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="RQy-ov-vGn" kind="relationship" relationship="viewControllers" id="Osj-3x-3XB"/>
+                        <segue destination="6Q0-dL-hb7" kind="relationship" relationship="viewControllers" id="Osj-3x-3XB"/>
                         <segue destination="jWS-Do-SZi" kind="relationship" relationship="viewControllers" id="LCT-Ti-fCT"/>
                     </connections>
                 </tabBarController>
@@ -42,42 +42,33 @@
             <point key="canvasLocation" x="-837" y="-235"/>
         </scene>
         <!--Home-->
-        <scene sceneID="Vyj-dS-fYX">
+        <scene sceneID="CmL-KH-wtD">
             <objects>
-                <viewController id="RQy-ov-vGn" customClass="HomeSceneViewController" customModule="Kino" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="G62-Hh-ugt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ykF-6n-F25">
-                                <rect key="frame" x="0.0" y="94" width="414" height="719"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BOS-3I-28R">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                            </collectionView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="ykF-6n-F25" firstAttribute="leading" secondItem="eU6-Uf-DvM" secondAttribute="leading" id="S8K-VM-vZG"/>
-                            <constraint firstItem="eU6-Uf-DvM" firstAttribute="bottom" secondItem="ykF-6n-F25" secondAttribute="bottom" id="imr-wI-tQ6"/>
-                            <constraint firstItem="eU6-Uf-DvM" firstAttribute="trailing" secondItem="ykF-6n-F25" secondAttribute="trailing" id="qh3-Ok-tx4"/>
-                            <constraint firstItem="ykF-6n-F25" firstAttribute="top" secondItem="eU6-Uf-DvM" secondAttribute="top" constant="50" id="s90-Po-qfR"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="eU6-Uf-DvM"/>
-                    </view>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Q0-dL-hb7" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="KsK-po-BY5"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cD7-oO-I6q">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
                     <connections>
-                        <outlet property="moviesCollectionView" destination="ykF-6n-F25" id="9h9-j8-fmA"/>
+                        <segue destination="R6f-tZ-8QR" kind="relationship" relationship="rootViewController" id="kum-7m-d1L"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WZ6-nF-nqx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ILT-aW-iMI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="80" y="-546"/>
+            <point key="canvasLocation" x="79.710144927536234" y="-546.42857142857144"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="eyz-IE-I6W">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" id="R6f-tZ-8QR" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="31U-pF-s5w"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lNK-Zg-IMb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="604" y="-546"/>
         </scene>
     </scenes>
     <resources>

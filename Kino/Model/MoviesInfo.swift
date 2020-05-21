@@ -23,7 +23,7 @@ struct MoviesInfo: Codable {
     }
 }
 
-// MARK: - Result
+// MARK: - Movie
 struct Movie: Codable {
     let popularity: Double
     let voteCount: Int
@@ -38,7 +38,7 @@ struct Movie: Codable {
     let title: String
     let voteAverage: Double
     let overview: String
-    let releaseDate: String
+    let releaseDate: String?
 
     enum CodingKeys: String, CodingKey {
         case popularity

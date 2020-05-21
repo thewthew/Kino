@@ -22,9 +22,10 @@ class KinoAPI {
     private let apiKey = "5473ad565413781b8af8e756e42d37de"
 
     enum Endpoint: String, CaseIterable {
-        case movieExample   = "/movie/550"
-        case discoverMovies = "/discover/movie"
-        case movieList      = "/genre/movie/list"
+        case movieExample       = "/movie/550"
+        case discoverMovies     = "/discover/movie"
+        case movieList          = "/genre/movie/list"
+        case moviesCollection   = "/genre/%@/movies"
     }
 
     private func fetchResources<T: Decodable>(url: URL,
@@ -56,6 +57,7 @@ class KinoAPI {
                     let values = try self.jsonDecoder.decode(T.self, from: data)
                     completion(.success(values))
                 } catch {
+                    print(error)
                     completion(.failure(.decodeError))
                 }
             case .failure:
@@ -78,6 +80,12 @@ class KinoAPI {
 
     public func getMovieListCategory(result: @escaping (Result<MoviesCategory, APIServiceError>) -> Void) {
         let movieListURL = baseURL.appendingPathComponent(Endpoint.movieList.rawValue)
+        fetchResources(url: movieListURL, completion: result)
+    }
+
+    public func getMoviesCollection(_ genre: String, result: @escaping (Result<MoviesInfo, APIServiceError>) -> Void) {
+        let url = String(format: Endpoint.moviesCollection.rawValue, genre)
+        let movieListURL = baseURL.appendingPathComponent(url)
         fetchResources(url: movieListURL, completion: result)
     }
 }

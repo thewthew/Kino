@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2b2-bX-x5j">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Home-->
+        <scene sceneID="8LA-47-kh7">
+            <objects>
+                <viewController id="2b2-bX-x5j" customClass="HomeSceneViewController" customModule="Kino" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="q4a-pY-BSJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IiQ-Jz-x92">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Kcd-Co-XHT">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="R2A-sa-4nC" firstAttribute="bottom" secondItem="IiQ-Jz-x92" secondAttribute="bottom" id="6Ge-fU-NWb"/>
+                            <constraint firstItem="IiQ-Jz-x92" firstAttribute="leading" secondItem="R2A-sa-4nC" secondAttribute="leading" id="8Sb-7F-HHa"/>
+                            <constraint firstItem="IiQ-Jz-x92" firstAttribute="top" secondItem="R2A-sa-4nC" secondAttribute="top" id="9F1-j0-XU4"/>
+                            <constraint firstItem="R2A-sa-4nC" firstAttribute="trailing" secondItem="IiQ-Jz-x92" secondAttribute="trailing" id="cwu-td-ez7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="R2A-sa-4nC"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Home" id="8dF-4o-CVm"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="moviesCollectionView" destination="IiQ-Jz-x92" id="i2Q-Ac-GwM"/>
+                        <segue destination="41y-BM-ewM" kind="show" identifier="goToMovieCategories" id="KMh-5H-tob"/>
+                        <segue destination="3dO-vN-6Ii" kind="show" identifier="goToMovieDetails" id="8D6-LD-AOs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pgQ-Wl-fjc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1013" y="-550"/>
+        </scene>
+        <!--Movie Details-->
+        <scene sceneID="abg-lB-lJd">
+            <objects>
+                <viewController id="3dO-vN-6Ii" customClass="MovieDetailsSceneViewController" customModule="Kino" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kQi-wr-F7i">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ufj-Xw-Fvf">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="acV-Hm-zgE">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Ufj-Xw-Fvf" firstAttribute="top" secondItem="pBq-E7-RzU" secondAttribute="top" id="bkJ-Ip-nrY"/>
+                            <constraint firstItem="pBq-E7-RzU" firstAttribute="trailing" secondItem="Ufj-Xw-Fvf" secondAttribute="trailing" id="fqq-Eu-jYn"/>
+                            <constraint firstItem="pBq-E7-RzU" firstAttribute="bottom" secondItem="Ufj-Xw-Fvf" secondAttribute="bottom" id="nGZ-AJ-d88"/>
+                            <constraint firstItem="Ufj-Xw-Fvf" firstAttribute="leading" secondItem="pBq-E7-RzU" secondAttribute="leading" id="rUJ-g7-3Jh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pBq-E7-RzU"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Movie Details" id="Hch-to-tnK"/>
+                    <connections>
+                        <outlet property="movieDetailsCollectionView" destination="Ufj-Xw-Fvf" id="eGa-Ke-gPT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s0j-l0-SzQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1842" y="-194"/>
+        </scene>
+        <!--Category-->
+        <scene sceneID="k6q-cm-X43">
+            <objects>
+                <viewController id="41y-BM-ewM" customClass="CategoryDetailsSceneViewController" customModule="Kino" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QoR-Vm-ABF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="140" estimatedRowHeight="140" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4AI-Cc-JMn">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="mbK-Xe-QMF" firstAttribute="bottom" secondItem="4AI-Cc-JMn" secondAttribute="bottom" id="EZk-Pm-3Dc"/>
+                            <constraint firstItem="4AI-Cc-JMn" firstAttribute="leading" secondItem="mbK-Xe-QMF" secondAttribute="leading" id="MT2-bc-15t"/>
+                            <constraint firstItem="mbK-Xe-QMF" firstAttribute="trailing" secondItem="4AI-Cc-JMn" secondAttribute="trailing" id="eB4-wX-BXT"/>
+                            <constraint firstItem="4AI-Cc-JMn" firstAttribute="top" secondItem="mbK-Xe-QMF" secondAttribute="top" id="hRt-s3-Ssd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mbK-Xe-QMF"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Category" id="qLP-ix-Hvq"/>
+                    <connections>
+                        <outlet property="moviesGenreTableView" destination="4AI-Cc-JMn" id="qNv-7n-UKV"/>
+                        <segue destination="3dO-vN-6Ii" kind="show" identifier="goToMovieDetails" id="sBG-L0-cFJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l68-Yk-Ukx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1843" y="-969"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="sBG-L0-cFJ"/>
+    </inferredMetricsTieBreakers>
+</document>
