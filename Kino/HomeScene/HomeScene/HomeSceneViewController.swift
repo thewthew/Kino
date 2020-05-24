@@ -24,9 +24,10 @@ final class HomeSceneViewController: UIViewController {
     typealias DataSource = UICollectionViewDiffableDataSource<HomeSceneViewModel.Section, HomeSceneViewModel.MovieCell>
     typealias Snapshot = NSDiffableDataSourceSnapshot<HomeSceneViewModel.Section, HomeSceneViewModel.MovieCell>
 
-    private struct SegueId {
-        static let goToMovieDetails = "goToMovieDetails"
-        static let goToCollectionDetails = "goToMovieCategories"
+    struct SegueId {
+        static let goToMovieDetails             = "goToMovieDetails"
+        static let goToCollectionDetails        = "goToMovieCategories"
+        static let goToMovieDetailsFromWigdet   = "goToMovieDetailsFromWigdet"
     }
 
     var interactor: HomeSceneInteractorInput?
@@ -89,6 +90,9 @@ final class HomeSceneViewController: UIViewController {
                 let genre = interactor?.genres[indexPath.row] {
                 destVC.interactor?.genre = genre
             }
+        case SegueId.goToMovieDetailsFromWigdet:
+            let movieID = sender as? String
+                print("movieID is \(movieID)")
         default: break
         }
     }

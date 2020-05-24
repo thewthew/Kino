@@ -71,8 +71,8 @@ class CustomImageView: UIImageView {
 
             guard let data = data,
                 let compressedImageData = UIImage(data: data)?.jpegData(compressionQuality: 1),
-                let compressedImage = UIImage(data: compressedImageData) else { return }
-                if self.imageUrlString == urlString {
+                let compressedImage = UIImage(data: compressedImageData),
+                imageUrlString == urlString else { return }
                     DispatchQueue.main.async { [weak self] in
                         guard let self = self else { return }
                         self.removeAnimation()
@@ -82,7 +82,6 @@ class CustomImageView: UIImageView {
                                           animations: { self.image = compressedImage },
                                           completion: nil)
                     }
-                }
             imageCache.setObject(compressedImage, forKey: urlString as AnyObject)
         }).resume()
     }
