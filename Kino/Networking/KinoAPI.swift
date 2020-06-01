@@ -26,6 +26,8 @@ class KinoAPI {
         case discoverMovies     = "/discover/movie"
         case movieList          = "/genre/movie/list"
         case moviesCollection   = "/genre/%@/movies"
+        case nowPlaying         = "/movie/now_playing"
+        case movieDetails       = "/movie/%@"
     }
 
     private func fetchResources<T: Decodable>(url: URL,
@@ -87,5 +89,17 @@ class KinoAPI {
         let url = String(format: Endpoint.moviesCollection.rawValue, genre)
         let movieListURL = baseURL.appendingPathComponent(url)
         fetchResources(url: movieListURL, completion: result)
+    }
+
+    public func getSuggestedMovie(result: @escaping (Result<MoviesInfo, APIServiceError>) -> Void) {
+        let url = Endpoint.nowPlaying.rawValue
+        let suggestedMovieURL = baseURL.appendingPathComponent(url)
+        fetchResources(url: suggestedMovieURL, completion: result)
+    }
+
+    public func getMovie(_ idMovie: String, result: @escaping (Result<Movie, APIServiceError>) -> Void) {
+        let url = String(format: Endpoint.movieDetails.rawValue, idMovie)
+        let movieURL = baseURL.appendingPathComponent(url)
+        fetchResources(url: movieURL, completion: result)
     }
 }

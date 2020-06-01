@@ -42,6 +42,7 @@
                         <outlet property="moviesCollectionView" destination="IiQ-Jz-x92" id="i2Q-Ac-GwM"/>
                         <segue destination="41y-BM-ewM" kind="show" identifier="goToMovieCategories" id="KMh-5H-tob"/>
                         <segue destination="3dO-vN-6Ii" kind="show" identifier="goToMovieDetails" id="8D6-LD-AOs"/>
+                        <segue destination="3dO-vN-6Ii" kind="show" identifier="goToMovieDetailsFromWigdet" id="BxQ-bK-Rrs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pgQ-Wl-fjc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -51,7 +52,7 @@
         <!--Movie Details-->
         <scene sceneID="abg-lB-lJd">
             <objects>
-                <viewController id="3dO-vN-6Ii" customClass="MovieDetailsSceneViewController" customModule="Kino" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MovieDetailsSbID" id="3dO-vN-6Ii" customClass="MovieDetailsSceneViewController" customModule="Kino" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kQi-wr-F7i">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -120,6 +121,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="sBG-L0-cFJ"/>
+        <segue reference="BxQ-bK-Rrs"/>
     </inferredMetricsTieBreakers>
 </document>

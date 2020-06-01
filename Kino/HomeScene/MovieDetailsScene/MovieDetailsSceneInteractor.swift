@@ -11,20 +11,39 @@ import Foundation
 protocol MovieDetailsSceneInteractorInput: class {
     func loadContent()
     var movie: Movie? { get set }
+    var idMovie: String? { get set }
 }
 
-final class MovieDetailsSceneInteractor {
+final class MovieDetailsSceneInteractor: KinoAPIInjected {
     var presenter: MovieDetailsScenePresenterInput?
     var movie: Movie?
+    var idMovie: String?
 
     init(presenter: MovieDetailsScenePresenterInput?) {
         self.presenter = presenter
     }
+
+    private func fetchMovieDetails(_ idMovie: String) {
+        kinoAPI.getMovie(idMovie) { [weak self] result in
+            switch result {
+            case .success(let movie):
+                DispatchQueue.main.async {
+                    self?.presenter?.modelUpdated(movie)
+                }
+            case .failure(let error):
+                print(#function + error.localizedDescription)
+            }
+        }
+    }
 }
 
 extension MovieDetailsSceneInteractor: MovieDetailsSceneInteractorInput {
+
     func loadContent() {
-        guard let movie = movie else { return }
-        presenter?.modelUpdated(movie)
+        if let movie = movie {
+            presenter?.modelUpdated(movie)
+        } else if let idMovie = idMovie {
+            fetchMovieDetails(idMovie)
+        }
     }
 }

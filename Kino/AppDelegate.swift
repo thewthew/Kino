@@ -19,6 +19,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    func application(_ app: UIApplication,
+                     open url: URL,
+                     options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+        if url.scheme == "com.kino" {
+            switch url.host {
+            case "widget":
+                guard let tabBarController = self.window?.rootViewController as? UITabBarController else { return false }
+                let tabIndex = tabBarController.selectedIndex
+                switch tabIndex {
+                case 0:
+                    if let homeNavigationController = tabBarController.viewControllers?[tabIndex] as? UINavigationController,
+                        let homeVC = homeNavigationController.topViewController as? HomeSceneViewController {
+                        homeVC.performSegue(withIdentifier: HomeSceneViewController.SegueId.goToMovieDetailsFromWigdet,
+                                            sender: url.pathComponents[1])
+                    }
+                default: break
+                }
+                return true
+            default: break
+            }
+        }
+        return true
+    }
+
     // MARK: - Core Data stack
 
     lazy var persistentContainer: NSPersistentContainer = {

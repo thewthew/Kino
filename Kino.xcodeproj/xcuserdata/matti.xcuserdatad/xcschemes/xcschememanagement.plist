@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Kino Widget.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 		<key>Kino.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +23,11 @@
 			<true/>
 		</dict>
 		<key>49099ED9245C209C00D7DCD5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>49B72A50247941CA0062D109</key>
 		<dict>
 			<key>primary</key>
 			<true/>
