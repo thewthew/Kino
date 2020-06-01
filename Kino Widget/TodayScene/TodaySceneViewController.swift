@@ -10,6 +10,7 @@ import UIKit
 
 protocol TodaySceneViewControllerInput: class {
     func viewModelUpdated(_ viewModel: TodaySceneViewModel.Content)
+    func openMovieDetails(with url: URL)
 }
 
 final class TodaySceneViewController: UIViewController {
@@ -35,23 +36,21 @@ final class TodaySceneViewController: UIViewController {
         interactor = TodaySceneInteractor(presenter: TodayScenePresenter(viewController: self))
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         interactor?.loadContent()
     }
 
     @IBAction func didTapWigetButton(_ sender: UIButton) {
-        if let movieID = viewModel?.movieID,
-            let movieTitle = viewModel?.movieTitle,
-            var url = URL(string: "com.kino://widget") {
-            url.appendPathComponent(movieID)
-            url.appendPathComponent(movieTitle)
-            self.extensionContext?.open(url, completionHandler: nil)
-        }
+        interactor?.openMovieDetails()
     }
 }
 
 extension TodaySceneViewController: TodaySceneViewControllerInput {
+    func openMovieDetails(with url: URL) {
+        extensionContext?.open(url, completionHandler: nil)
+    }
+
     func viewModelUpdated(_ viewModel: TodaySceneViewModel.Content) {
         self.viewModel = viewModel
         todayMovieImageView.loadImage(with: viewModel.moviePosterURL)

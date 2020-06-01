@@ -10,6 +10,7 @@ import Foundation
 
 protocol TodaySceneInteractorInput: class {
     func loadContent()
+    func openMovieDetails()
 }
 
 final class TodaySceneInteractor: KinoAPIInjected {
@@ -27,6 +28,7 @@ final class TodaySceneInteractor: KinoAPIInjected {
                 DispatchQueue.main.async { [weak self] in
                     let randomID = Int.random(in: 0 ... moviesInfo.movies.count - 1)
                     let movieToShow = moviesInfo.movies[randomID]
+                    self?.movie = movieToShow
                     self?.presenter?.modelUpdated(movieToShow)
                 }
             case .failure(let error):
@@ -37,6 +39,14 @@ final class TodaySceneInteractor: KinoAPIInjected {
 }
 
 extension TodaySceneInteractor: TodaySceneInteractorInput {
+    func openMovieDetails() {
+        guard let movie = movie,
+        var url = URL(string: "com.kino://widget") else { return }
+        url.appendPathComponent("\(movie.movieId)")
+        url.appendPathComponent(movie.title)
+        presenter?.displayMovieDetails(with: url)
+    }
+
     func loadContent() {
         getSuggestedMovie()
     }

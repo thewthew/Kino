@@ -10,6 +10,7 @@ import Foundation
 
 protocol TodayScenePresenterInput: class {
     func modelUpdated(_ movie: Movie)
+    func displayMovieDetails(with url: URL)
 }
 
 final class TodayScenePresenter {
@@ -21,6 +22,10 @@ final class TodayScenePresenter {
 }
 
 extension TodayScenePresenter: TodayScenePresenterInput {
+    func displayMovieDetails(with url: URL) {
+        viewController?.openMovieDetails(with: url)
+    }
+
     func modelUpdated(_ movie: Movie) {
         let viewModel = TodaySceneViewModel.Content(movieTitle: movie.title,
                                                     movieDescription: movie.overview,

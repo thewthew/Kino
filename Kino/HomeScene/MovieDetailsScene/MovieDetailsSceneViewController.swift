@@ -72,19 +72,22 @@ final class MovieDetailsSceneViewController: UIViewController {
 
     private func configureLayout() {
         movieDetailsCollectionView.collectionViewLayout =
-            UICollectionViewCompositionalLayout(sectionProvider: { (sectionIndex, _) -> NSCollectionLayoutSection? in
-            let sectionLayoutKind = self.sections?[sectionIndex].modelType
-            switch sectionLayoutKind {
-            case .image:
-                return self.generateCoverImageSection()
-            case .basicInfo:
-                return self.generateBasicInfoSection()
-            case .overview:
-                return self.generateOverviewSection()
-            default:
-                return nil
-            }
-        })
+            UICollectionViewCompositionalLayout(sectionProvider: { [weak self] (sectionIndex, _) -> NSCollectionLayoutSection? in
+                guard let self = self else {
+                    return nil
+                }
+                let sectionLayoutKind = self.sections?[sectionIndex].modelType
+                switch sectionLayoutKind {
+                case .image:
+                    return self.generateCoverImageSection()
+                case .basicInfo:
+                    return self.generateBasicInfoSection()
+                case .overview:
+                    return self.generateOverviewSection()
+                default:
+                    return nil
+                }
+            })
     }
 
     private func generateCoverImageSection() -> NSCollectionLayoutSection? {

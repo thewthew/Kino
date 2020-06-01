@@ -91,8 +91,10 @@ final class HomeSceneViewController: UIViewController {
                 destVC.interactor?.genre = genre
             }
         case SegueId.goToMovieDetailsFromWigdet:
-            let movieID = sender as? String
-                print("movieID is \(movieID)")
+            if let destVC = segue.destination as? MovieDetailsSceneViewController,
+                let movieID = sender as? String {
+                destVC.interactor?.idMovie = movieID
+            }
         default: break
         }
     }

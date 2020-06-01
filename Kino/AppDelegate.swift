@@ -25,16 +25,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if url.scheme == "com.kino" {
             switch url.host {
             case "widget":
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                if let homeNavigationBar =
-                    storyboard.instantiateViewController(identifier: "HomeNavigationSBID") as? UINavigationController,
-                    let homeSceneVC = homeNavigationBar.viewControllers.first as? HomeSceneViewController {
-                        homeSceneVC.performSegue(withIdentifier: HomeSceneViewController.SegueId.goToMovieDetailsFromWigdet,
-                                                 sender: url.pathComponents[1])
+                guard let tabBarController = self.window?.rootViewController as? UITabBarController else { return false }
+                let tabIndex = tabBarController.selectedIndex
+                switch tabIndex {
+                case 0:
+                    if let homeNavigationController = tabBarController.viewControllers?[tabIndex] as? UINavigationController,
+                        let homeVC = homeNavigationController.topViewController as? HomeSceneViewController {
+                        homeVC.performSegue(withIdentifier: HomeSceneViewController.SegueId.goToMovieDetailsFromWigdet,
+                                            sender: url.pathComponents[1])
                     }
+                default: break
+                }
                 return true
-            default:
-                break
+            default: break
             }
         }
         return true
