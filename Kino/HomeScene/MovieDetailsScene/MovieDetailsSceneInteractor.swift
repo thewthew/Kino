@@ -27,7 +27,6 @@ final class MovieDetailsSceneInteractor: KinoAPIInjected {
         kinoAPI.getMovie(idMovie) { [weak self] result in
             switch result {
             case .success(let movie):
-                print(movie)
                 DispatchQueue.main.async {
                     self?.presenter?.modelUpdated(movie)
                 }
