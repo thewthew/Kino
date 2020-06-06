@@ -12,7 +12,7 @@ protocol WatchListSceneInteractorInput: class {
     func loadContent()
 }
 
-final class WatchListSceneInteractor {
+final class WatchListSceneInteractor: DataManagerInjected {
     var presenter: WatchListScenePresenterInput?
 
     init(presenter: WatchListScenePresenterInput?) {
@@ -22,6 +22,8 @@ final class WatchListSceneInteractor {
 
 extension WatchListSceneInteractor: WatchListSceneInteractorInput {
     func loadContent() {
-
+        dataManager.fetchMovies()?.forEach({ (movie) in
+            print(movie.title)
+        })
     }
 }
