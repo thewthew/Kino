@@ -3,25 +3,18 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--WatchList-->
-        <scene sceneID="mAF-Ha-IDt">
+        <scene sceneID="z5O-mn-IUl">
             <objects>
-                <viewController id="jWS-Do-SZi" customClass="WatchListSceneViewController" customModule="Kino" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="mac-pP-8fW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="qUn-tf-hlv"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="WatchList" image="folder" catalog="system" id="tRq-Kj-cAQ"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uja-zN-Y6n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="WatchList" id="f5N-Ho-QAV" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="1co-lO-6xB"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oum-mQ-e6p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="80" y="137"/>
+            <point key="canvasLocation" x="604" y="137"/>
         </scene>
         <!--Kino Tabbar View Controller-->
         <scene sceneID="yqt-ug-ShV">
@@ -34,7 +27,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="6Q0-dL-hb7" kind="relationship" relationship="viewControllers" id="Osj-3x-3XB"/>
-                        <segue destination="jWS-Do-SZi" kind="relationship" relationship="viewControllers" id="LCT-Ti-fCT"/>
+                        <segue destination="L2c-fQ-DXK" kind="relationship" relationship="viewControllers" id="b94-lz-g26"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6gv-tt-SoQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -69,6 +62,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lNK-Zg-IMb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="604" y="-546"/>
+        </scene>
+        <!--WatchList-->
+        <scene sceneID="0HL-Mj-jiO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="L2c-fQ-DXK" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="WatchList" image="folder" catalog="system" id="ePX-3Y-Tg6"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pcp-Ci-rgM">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="f5N-Ho-QAV" kind="relationship" relationship="rootViewController" id="mkC-ln-czK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hQj-JK-Ndp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="80" y="137"/>
         </scene>
     </scenes>
     <resources>

@@ -98,7 +98,7 @@ class DataManager: NSObject {
                                        title: recordedMovie.title ?? "",
                                        voteAverage: 0.0,
                                        overview: recordedMovie.overview ?? "",
-                                       releaseDate: nil)
+                                       releaseDate: recordedMovie.releaseDate)
 
         return restoredMovie
     }

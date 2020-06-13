@@ -22,8 +22,8 @@ final class WatchListSceneInteractor: DataManagerInjected {
 
 extension WatchListSceneInteractor: WatchListSceneInteractorInput {
     func loadContent() {
-        dataManager.fetchMovies()?.forEach({ (movie) in
-            print(movie.title)
-        })
+        if let favoriteMovies = dataManager.fetchMovies() {
+            presenter?.modelUpdated(movies: favoriteMovies)
+        }
     }
 }
