@@ -9,7 +9,8 @@
 import Foundation
 
 protocol MovieDetailsScenePresenterInput: class {
-    func modelUpdated(_ movie: Movie)
+    func modelUpdated(_ movie: Movie, isFavorite: Bool)
+    func switchFavoriteIcon(_ isOn: Bool)
 }
 
 final class MovieDetailsScenePresenter {
@@ -21,7 +22,12 @@ final class MovieDetailsScenePresenter {
 }
 
 extension MovieDetailsScenePresenter: MovieDetailsScenePresenterInput {
-    func modelUpdated(_ movie: Movie) {
+    func switchFavoriteIcon(_ isOn: Bool) {
+        let iconName = isOn ? "star.fill" : "star"
+        viewController?.updateFavoriteIcon(iconName)
+    }
+
+    func modelUpdated(_ movie: Movie, isFavorite: Bool) {
         let imageCell = MovieDetailsSceneViewModel.ImageCellViewModel(imageURL: movie.imageFullPathURL)
         let movieInfoTitle = movie.title + " " + "(\(movie.yearReleaseDate ?? "no release date"))"
         let basicCell = MovieDetailsSceneViewModel.BasicInfoViewModel(title: movieInfoTitle)
@@ -32,7 +38,11 @@ extension MovieDetailsScenePresenter: MovieDetailsScenePresenterInput {
         let overviewSection = MovieDetailsSceneViewModel.Section(modelType: .overview, cells: [overviewCell])
         let sections = [imageSection, basicSection, overviewSection]
 
-        let viewModel = MovieDetailsSceneViewModel.Content(title: movie.title, sections: sections)
+        let icon = isFavorite ? "star.fill" : "star"
+
+        let viewModel = MovieDetailsSceneViewModel.Content(title: movie.title,
+                                                           sections: sections,
+                                                           iconName: icon)
         viewController?.viewModelUpdated(viewModel)
     }
 }

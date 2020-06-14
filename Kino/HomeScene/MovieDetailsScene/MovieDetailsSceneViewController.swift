@@ -10,6 +10,7 @@ import UIKit
 
 protocol MovieDetailsSceneViewControllerInput: class {
     func viewModelUpdated(_ viewModel: MovieDetailsSceneViewModel.Content)
+    func updateFavoriteIcon(_ iconName: String)
 }
 
 final class MovieDetailsSceneViewController: UIViewController {
@@ -55,6 +56,10 @@ final class MovieDetailsSceneViewController: UIViewController {
 
     private func updateViewContent() {
         title = viewModel?.title
+    }
+
+    @objc private func favoriteIconTapped() {
+        interactor?.didTapFavoriteButton()
     }
 
     private func applySnapshot(animatingDifferences: Bool = true) {
@@ -116,6 +121,10 @@ final class MovieDetailsSceneViewController: UIViewController {
  }
 
 extension MovieDetailsSceneViewController: MovieDetailsSceneViewControllerInput {
+    func updateFavoriteIcon(_ iconName: String) {
+        navigationItem.rightBarButtonItem?.image = UIImage(systemName: iconName)
+    }
+
     func viewModelUpdated(_ viewModel: MovieDetailsSceneViewModel.Content) {
         self.viewModel = viewModel
         viewModel.sections?.forEach({ (section) in
@@ -123,6 +132,9 @@ extension MovieDetailsSceneViewController: MovieDetailsSceneViewControllerInput 
         })
         applySnapshot(animatingDifferences: true)
 
+        let image = UIImage(systemName: viewModel.iconName)
+        let fav = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(favoriteIconTapped))
+        navigationItem.rightBarButtonItems = [fav]
     }
 }
 

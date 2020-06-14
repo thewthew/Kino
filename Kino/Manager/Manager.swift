@@ -10,8 +10,10 @@ import Foundation
 
 struct ManagerInjectionMap {
     static var kinoAPI: KinoAPI = KinoAPI.shared
+    static var dataManager: DataManager = DataManager.shared
 
     static func reset() {
         ManagerInjectionMap.kinoAPI = KinoAPI.shared
+        ManagerInjectionMap.dataManager = DataManager.shared
     }
 }

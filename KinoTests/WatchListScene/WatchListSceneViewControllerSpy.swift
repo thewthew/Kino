@@ -12,9 +12,9 @@ import XCTest
 class WatchListSceneViewControllerSpy: WatchListSceneViewControllerInput {
     var invokedViewModelUpdated = false
     var invokedViewModelUpdatedCount = 0
-    var invokedViewModelUpdatedParameters: (viewModel: WatchListSceneViewModel.Content, Void)?
-    var invokedViewModelUpdatedParametersList = [(viewModel: WatchListSceneViewModel.Content, Void)]()
-    func viewModelUpdated(_ viewModel: WatchListSceneViewModel.Content) {
+    var invokedViewModelUpdatedParameters: (viewModel: WatchListSceneViewModel.Section, Void)?
+    var invokedViewModelUpdatedParametersList = [(viewModel: WatchListSceneViewModel.Section, Void)]()
+    func viewModelUpdated(_ viewModel: WatchListSceneViewModel.Section) {
         invokedViewModelUpdated = true
         invokedViewModelUpdatedCount += 1
         invokedViewModelUpdatedParameters = (viewModel, ())

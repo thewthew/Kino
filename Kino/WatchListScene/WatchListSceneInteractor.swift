@@ -10,18 +10,23 @@ import Foundation
 
 protocol WatchListSceneInteractorInput: class {
     func loadContent()
+    var favoriteMovies: Movies? { get set }
 }
 
-final class WatchListSceneInteractor {
+final class WatchListSceneInteractor: DataManagerInjected {
     var presenter: WatchListScenePresenterInput?
-
+    var favoriteMovies: Movies?
     init(presenter: WatchListScenePresenterInput?) {
         self.presenter = presenter
     }
 }
 
 extension WatchListSceneInteractor: WatchListSceneInteractorInput {
-    func loadContent() {
 
+    func loadContent() {
+        if let storedMovies = dataManager.fetchMovies() {
+            favoriteMovies = storedMovies
+            presenter?.modelUpdated(movies: storedMovies)
+        }
     }
 }

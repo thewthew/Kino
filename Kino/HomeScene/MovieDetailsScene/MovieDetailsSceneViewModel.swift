@@ -18,8 +18,9 @@ enum MovieDetailSectionType: Hashable {
 
 enum MovieDetailsSceneViewModel {
     struct Content {
-        var title: String?
-        var sections: [Section]?
+        let title: String?
+        let sections: [Section]?
+        let iconName: String
 
         static func == (lhs: MovieDetailsSceneViewModel.Content, rhs: MovieDetailsSceneViewModel.Content) -> Bool {
             return true
@@ -32,8 +33,8 @@ enum MovieDetailsSceneViewModel {
     }
 
     struct Section: Hashable {
-        var modelType: MovieDetailSectionType?
-        var cells: [Cell]?
+        let modelType: MovieDetailSectionType?
+        let cells: [Cell]?
 
         static func == (lhs: MovieDetailsSceneViewModel.Section, rhs: MovieDetailsSceneViewModel.Section) -> Bool {
             return lhs.identifier == rhs.identifier
