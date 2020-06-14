@@ -57,6 +57,7 @@ class DataManager: NSObject {
         movieRecord.imageURL = movieToSave.imageURL
         movieRecord.movieId = Int32(movieToSave.movieId)
         movieRecord.overview = movieToSave.overview
+        movieRecord.releaseDate = movieToSave.releaseDate
 
         do {
             try managedContext.save()

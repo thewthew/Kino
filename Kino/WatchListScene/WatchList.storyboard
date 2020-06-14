@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Watch List Scene View Controller-->
+        <!--Your Selection-->
         <scene sceneID="Kh8-FX-iof">
             <objects>
-                <viewController id="npl-qW-h7O" customClass="WatchListSceneViewController" customModule="Kino" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Your Selection" id="npl-qW-h7O" customClass="WatchListSceneViewController" customModule="Kino" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="j6X-7D-9en">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,11 +31,22 @@
                     </view>
                     <connections>
                         <outlet property="watchListTableView" destination="SYL-Et-Upi" id="3G9-vx-DSf"/>
+                        <segue destination="m1E-9O-q4C" kind="push" identifier="goToMovieDetails" id="Z28-rX-OSh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JKR-Vg-vyT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="872" y="33"/>
+        </scene>
+        <!--MovieDetails-->
+        <scene sceneID="8uF-9l-hCn">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MovieDetails" id="m1E-9O-q4C" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Ypn-Ei-5rT"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1ZB-rP-UTC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1423" y="33"/>
         </scene>
     </scenes>
 </document>

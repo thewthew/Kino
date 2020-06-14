@@ -19,6 +19,10 @@ final class WatchListSceneViewController: UIViewController {
     typealias DataSource = UITableViewDiffableDataSource<WatchListSceneViewModel.Section, WatchListSceneViewModel.MovieCell>
     typealias Snapshot = NSDiffableDataSourceSnapshot<WatchListSceneViewModel.Section, WatchListSceneViewModel.MovieCell>
 
+    struct SegueId {
+        static let goToMovieDetails = "goToMovieDetails"
+    }
+
     private var sections: [WatchListSceneViewModel.Section]? = [WatchListSceneViewModel.Section]()
     private lazy var dataSource = makeDataSource()
     var interactor: WatchListSceneInteractorInput?
@@ -42,6 +46,7 @@ final class WatchListSceneViewController: UIViewController {
         super.viewDidLoad()
         watchListTableView.register(registrableClass: FavoriteMovieCell.self)
         watchListTableView.dataSource = makeDataSource()
+        watchListTableView.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -60,6 +65,15 @@ final class WatchListSceneViewController: UIViewController {
         }
         dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let movieDetailsVC = segue.destination as? MovieDetailsSceneViewController,
+            let indexPath = sender as? IndexPath,
+            let favoritesMovies = interactor?.favoriteMovies,
+            indexPath.row < favoritesMovies.count {
+            movieDetailsVC.interactor?.movie = favoritesMovies[indexPath.row]
+        }
+    }
 }
 
 extension WatchListSceneViewController: WatchListSceneViewControllerInput {
@@ -70,7 +84,7 @@ extension WatchListSceneViewController: WatchListSceneViewControllerInput {
     }
 }
 
-// MARK: - TableView datasource
+// MARK: - UITableViewDataSource
 extension WatchListSceneViewController {
     func makeDataSource() -> DataSource {
         return UITableViewDiffableDataSource(tableView: watchListTableView, cellProvider: { tableView, indexPath, movie in
@@ -80,5 +94,12 @@ extension WatchListSceneViewController {
             }
             return cell
         })
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension WatchListSceneViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: SegueId.goToMovieDetails, sender: indexPath)
     }
 }
