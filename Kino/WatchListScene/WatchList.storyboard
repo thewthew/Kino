@@ -31,7 +31,7 @@
                     </view>
                     <connections>
                         <outlet property="watchListTableView" destination="SYL-Et-Upi" id="3G9-vx-DSf"/>
-                        <segue destination="m1E-9O-q4C" kind="push" identifier="goToMovieDetails" id="Z28-rX-OSh"/>
+                        <segue destination="m1E-9O-q4C" kind="show" identifier="goToMovieDetails" id="Z28-rX-OSh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JKR-Vg-vyT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
